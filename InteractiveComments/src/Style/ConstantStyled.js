@@ -9,16 +9,45 @@ const veryLightGray = "hsl(228, 33%, 97%)"
 const white = "hsl(0, 0%, 100%)"
 
 export const COLORS = {
+    vote: {
+        btn: lightGrayishBlue,
+        btnHover: moderateBlue,
+        score: moderateBlue,
+        bck: lightGray
+    }
 }
 
-// SIZE
-export const SIZE = {
-    avatar: {
+export const LIGHT_FONT = 400;
+export const REGULAR_FONT = 500;
+export const BOLD_FONT = 700;
+
+export const CORNER_RADIUS = "10px";
+
+
+export const VOTE = {
+    sizes: {
+        width: {
+            desktop: "4%"
+        },
+        votingBtn: {
+            desktop: "1rem"
+        },
+        font: {
+            desktop: "1.17em" // temporary
+        }
+    },
+    gap: "0.7em",
+    colors: COLORS.vote,
+    padding: {
+        desktop: "0.8em 0.6em"
+    }
+}
+
+export const AVATAR = {
+    sizes: {
         desktop: "3.9rem"
     },
-    votingBtn: {
-        desktop: "2.5rem"
-    }
+    
 }
 
 // URL

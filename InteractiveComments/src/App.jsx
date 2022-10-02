@@ -1,17 +1,17 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import GlobalStyled from './Style/GlobalStyled'
-
+import {CommentsContext} from "./Helpers/Contexts"
 import JsonData from "./Resources/data.json"
 import Vote from './Components/Vote/Vote'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [comments, setComments] = useState(JsonData.comments)
   
   return (
-    <div className="App">
+    <CommentsContext.Provider value={{comments, setComments}}>
       <GlobalStyled />
-      <Vote score={JsonData.comments[0].score}></Vote>
-    </div>
+      <Vote id={1} score={JsonData.comments[0].score}></Vote>
+    </CommentsContext.Provider>
   )
 }
 
