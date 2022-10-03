@@ -5,6 +5,11 @@ export const FlexCenter = css`
     justify-content: center;
     align-items: center;
 `
+export const FlexBtw = css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`
 export const FlexLeft = css`
     display: flex;
     justify-content: flex-start;

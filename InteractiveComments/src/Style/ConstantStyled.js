@@ -37,7 +37,8 @@ export const COLORS = {
     delete: {
         btn: softRed,
         btnHover: paleRed
-    }
+    },
+    divider: lightGray
 }
 
 export const LIGHT_FONT = 400;
@@ -120,7 +121,7 @@ export const CARD = {
     reply: {
         sizes: {
             width: {
-                desktop: "52%",
+                desktop: "100%",
             },
             gap: "0.5em"
         }
