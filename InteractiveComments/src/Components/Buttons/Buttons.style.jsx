@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FlexCenter } from "../../Style/GeneralStyled";
 
 export const Button = styled.button`
     width: ${props => props.width.desktop};
@@ -21,5 +22,17 @@ export const ImageButton = styled(Button)`
     fill: ${props => props.colorBtn};
     &:not([disabled]):hover {
       fill: ${props => props.colorBtnHover};
+    }
+`
+export const TextIconButton = styled(Button)`
+    fill: ${props => props.color};
+    color: ${props => props.color};
+
+    ${FlexCenter}
+    gap: ${props => props.gap};
+
+    grid-area: ${props => props.gridArea};
+    &:hover {
+      opacity: 0.5;
     }
 `

@@ -9,12 +9,18 @@ const veryLightGray = "hsl(228, 33%, 97%)"
 const white = "hsl(0, 0%, 100%)"
 
 export const COLORS = {
+    bck: veryLightGray,
     vote: {
         btn: lightGrayishBlue,
         btnHover: moderateBlue,
         score: moderateBlue,
-        bck: lightGray
-    }
+        bck: veryLightGray
+    },
+    username: darkBlue,
+    date: grayishBlue,
+    content: grayishBlue,
+    replyBtn: moderateBlue,
+    cardBck: white
 }
 
 export const LIGHT_FONT = 400;
@@ -23,11 +29,60 @@ export const BOLD_FONT = 700;
 
 export const CORNER_RADIUS = "10px";
 
+const BUTTON_GAP = '0.6em'
+export const MAIN_PAGE = {
+    gap: "1.5em",
+    padding: "1.5em 1em",
+}
+export const BUTTONS = {
+    reply: {
+        color: moderateBlue,
+        text: "Reply",
+        gap: BUTTON_GAP,
+        size: {
+            width: {
+                desktop: "100%"
+            },
+            height: {
+                desktop: "2em"
+            }
+        }
+    }
+}
+
+export const CARD = {
+    read: {
+        sizes: {
+            width: {
+                desktop: "55%",
+            },
+            gap: "1em"
+        },
+        gridTemplate: {
+            desktop: 
+            `"vote avatar name date . reply" auto
+            "vote content content content content content" auto /
+            auto auto auto 1fr 1fr 1fr`
+        }
+    },
+    reply: {
+        sizes: {
+            width: {
+                desktop: "40%",
+            },
+        }
+    },
+    backgroundColor: COLORS.cardBck,
+    borderRadius: CORNER_RADIUS,
+    padding: {
+        desktop: "1.9em 1.5em"
+    },
+}
 
 export const VOTE = {
     sizes: {
         width: {
-            desktop: "4%"
+            desktop: "2.6em"
         },
         votingBtn: {
             desktop: "1rem"
@@ -36,7 +91,7 @@ export const VOTE = {
             desktop: "1.17em" // temporary
         }
     },
-    gap: "0.7em",
+    gap: "1em",
     colors: COLORS.vote,
     padding: {
         desktop: "0.8em 0.6em"
@@ -45,7 +100,7 @@ export const VOTE = {
 
 export const AVATAR = {
     sizes: {
-        desktop: "3.9rem"
+        desktop: "2.7em"
     },
     
 }
@@ -60,6 +115,6 @@ export const getImgUrl = (type, name) => {
         case "icon":
             return new URL(`${ICON_URL + name}.svg`, import.meta.url).href 
         case "avatar":
-            return new URL(`${AVATAR_URL + name}.svg`, import.meta.url).href 
+            return new URL(`${AVATAR_URL + name}.png`, import.meta.url).href 
     }
 }

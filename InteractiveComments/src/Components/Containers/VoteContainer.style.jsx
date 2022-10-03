@@ -4,11 +4,12 @@ import { FlexCenterColumn } from "../../Style/GeneralStyled";
 import { CORNER_RADIUS } from "../../Style/ConstantStyled";
 
 const VoteContainer = styled.div`
+  grid-area: vote;
   ${FlexCenterColumn}
   gap: ${props => props.gap};
   
-  width: ${props => props.width};
   min-width: ${props => props.minWidth.desktop};
+  width: ${props => props.width};
 
   padding: ${props => props.padding.desktop};
   border-radius: ${CORNER_RADIUS};

@@ -9,8 +9,21 @@ export const FlexCenterColumn = css`
     ${FlexCenter}
     flex-direction: column;
 `
-
-export const H3 = styled.h3`
+export const Font = css`
     font-weight: ${ ({weight}) => weight || constStyle.LIGHT_FONT};
     color: ${props => props.color};
+    grid-area: ${props => props.gridArea};
+`
+export const H3 = styled.h3`
+    ${Font}
+`
+export const H4 = styled.h4`
+    ${Font}
+`
+export const H5 = styled.h5`
+    ${Font}
+`
+export const P = styled.p`
+    ${Font}
+    line-height: 1.3;
 `
