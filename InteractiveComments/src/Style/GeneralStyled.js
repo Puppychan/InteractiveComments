@@ -5,10 +5,17 @@ export const FlexCenter = css`
     justify-content: center;
     align-items: center;
 `
+export const FlexLeft = css`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+`
 export const FlexCenterColumn = css`
     ${FlexCenter}
     flex-direction: column;
 `
+
+
 export const Font = css`
     font-weight: ${ ({weight}) => weight || constStyle.LIGHT_FONT};
     color: ${props => props.color};

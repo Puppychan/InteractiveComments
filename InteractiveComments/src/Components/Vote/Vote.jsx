@@ -11,7 +11,7 @@ import * as constStyle from "../../Style/ConstantStyled"
 import { ReactComponent as MinusIcon } from "../../assets/icon-minus.svg"
 import { ReactComponent as PlusIcon } from "../../assets/icon-plus.svg"
 
-const Vote = ({ index }) => {
+const Vote = ({ index, gridArea }) => {
   // context
   const { comments, setComments } = useContext(CommentsContext)
   const [score, setScore] = useState(comments[index].score)
@@ -41,6 +41,7 @@ const Vote = ({ index }) => {
 
   return (
     <VoteContainer
+      gridArea={gridArea}
       widthBtn={buttonSize}
       heightBtn={buttonSize}
       minWidth={vote.sizes.width}

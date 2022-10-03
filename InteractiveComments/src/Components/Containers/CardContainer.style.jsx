@@ -11,18 +11,23 @@ export const CardContainer = styled.div`
     padding: ${CARD.padding.desktop};
     
 
-    ${props => (props.type == "read" || props.typed == 'reply') && `
+    ${props => (props.type == "read") && `
         gap: ${CARD.main.sizes.gap};
-
         width: ${CARD.main.sizes.width.desktop};
     `}
     ${props => props.type == "reply" && `
+        gap: ${CARD.reply.sizes.gap};
         width: ${CARD.reply.sizes.width.desktop};
     `}
 
-    ${props => !props.isUser ? `
+    ${props => props.template == "peopleComment" && `
         grid-template: ${CARD.peopleComment.gridTemplate.desktop}; 
-    ` : `
+    `}
+    ${props => props.template == "userComment" && `
         grid-template: ${CARD.userComment.gridTemplate.desktop}; 
     `}
+    ${props => props.template == "updateComment" && `
+        grid-template: ${CARD.updateComment.gridTemplate.desktop}; 
+    `}
+    
 `

@@ -24,6 +24,19 @@ export const COLORS = {
     youTag: {
         bck: moderateBlue,
         text: white
+    },
+    replyTag: moderateBlue,
+    submit: {
+        btn: moderateBlue,
+        text: veryLightGray
+    },
+    changeBtn: {
+        btn: moderateBlue,
+        btnHover: lightGrayishBlue
+    },
+    delete: {
+        btn: softRed,
+        btnHover: paleRed
     }
 }
 
@@ -31,7 +44,8 @@ export const LIGHT_FONT = 400;
 export const REGULAR_FONT = 500;
 export const BOLD_FONT = 700;
 
-export const CORNER_RADIUS = "10px";
+export const CORNER_RADIUS = "15px";
+export const SMALL_CORNER_RADIUS = "10px";
 
 const BUTTON_GAP = '0.6em'
 export const MAIN_PAGE = {
@@ -40,10 +54,7 @@ export const MAIN_PAGE = {
 }
 export const BUTTONS = {
     reply: {
-        colors: {
-            btn: moderateBlue,
-            btnHover: lightGrayishBlue,
-        },
+        colors: COLORS.changeBtn,
         text: "Reply",
         gap: BUTTON_GAP,
         size: {
@@ -56,10 +67,7 @@ export const BUTTONS = {
         }
     },
     edit: {
-        colors: {
-            btn: moderateBlue,
-            btnHover: lightGrayishBlue,
-        },
+        colors: COLORS.changeBtn,
         text: "Edit",
         gap: BUTTON_GAP,
         size: {
@@ -72,10 +80,7 @@ export const BUTTONS = {
         }
     },
     delete: {
-        colors: {
-            btn: softRed,
-            btnHover: paleRed,
-        },
+        colors: COLORS.delete,
         text: "Delete",
         gap: BUTTON_GAP,
         size: {
@@ -86,6 +91,20 @@ export const BUTTONS = {
                 desktop: "2em"
             }
         }
+    },
+    submit: {
+        colors: COLORS.submit,
+        weight: BOLD_FONT,
+        size: {
+            padding: "0.5em 1em",
+            width: {
+                desktop: "50%"
+            },
+            height: {
+                desktop: "3em"
+            }
+        },
+        borderRadius: SMALL_CORNER_RADIUS
     }
 }
 
@@ -101,8 +120,28 @@ export const CARD = {
     reply: {
         sizes: {
             width: {
-                desktop: "40%",
+                desktop: "52%",
             },
+            gap: "0.5em"
+        }
+    },
+
+    updateComment: {
+        gridTemplate: {
+            desktop: 
+            `"vote avatar name you date" auto
+            "vote content content content content" auto
+            ". . . . btn" auto /
+            auto auto auto 0.2fr 1fr`
+        }
+    },
+    write: {
+        gridTemplate: {
+            desktop:
+            `"avatar content btn" 1fr
+            ". content ." 1fr /
+            auto 1fr auto
+            `
         }
     },
 
@@ -111,7 +150,7 @@ export const CARD = {
             desktop: 
             `"vote avatar name date . reply" auto
             "vote content content content content content" auto /
-            auto auto auto 1fr 1fr 1fr`
+            auto auto auto 1fr auto auto`
         }
     },
     userComment: {
@@ -119,7 +158,7 @@ export const CARD = {
             desktop: 
             `"vote avatar name you date delete edit" auto
             "vote content content content content content content" auto /
-            auto auto auto 0.2fr 1.2fr 1fr 1fr`
+            auto auto auto 0.2fr 1fr auto auto`
         }
     },
     backgroundColor: COLORS.cardBck,
@@ -134,6 +173,13 @@ export const YOU_TAG = {
     weight: REGULAR_FONT,
     padding: {
         desktop: "0.1em 0.4em"
+    }
+}
+export const REPLY_TAG = {
+    colors: COLORS.replyTag,
+    weight: REGULAR_FONT,
+    padding: {
+        desktop: "0.5em"
     }
 }
 
@@ -161,6 +207,26 @@ export const AVATAR = {
         desktop: "2.7em"
     },
     
+}
+
+export const TEXTAREA = {
+    sizes: {
+        width: "100%",
+        height: {
+            desktop: "10em"
+        },
+        padding: {
+            desktop: "1em 1.1em"
+        },
+        font: {
+            desktop: "0.9em"
+        }
+    },
+    borderRadius: SMALL_CORNER_RADIUS,
+    colors: {
+        border: moderateBlue,
+        text: darkBlue
+    }
 }
 
 // URL

@@ -19,9 +19,9 @@ export const Button = styled.button`
     }
 `
 export const ImageButton = styled(Button)`
-    fill: ${props => props.colorBtn};
+    fill: ${props => props.color.btn};
     &:not([disabled]):hover {
-      fill: ${props => props.colorBtnHover};
+      fill: ${props => props.color.btnHover};
     }
 `
 export const TextIconButton = styled(Button)`
@@ -36,4 +36,18 @@ export const TextIconButton = styled(Button)`
         fill: ${props => props.color.btnHover};
         color: ${props => props.color.btnHover};
     }
+`
+export const SubmitButton = styled(Button)`
+    background-color: ${props => props.color.btn};
+    color: ${props => props.color.text};
+    font-weight: ${props => props.weight};
+    border-radius: ${props => props.borderRadius};
+
+    grid-area: ${props => props.gridArea};
+    justify-self: flex-end;
+    
+    &:hover {
+        opacity: 0.5;
+    }
+    
 `

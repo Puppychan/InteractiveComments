@@ -9,6 +9,7 @@ const YouTag = ({gridArea}) => {
     style={{
         gridArea: gridArea,
        backgroundColor: YOU_TAG.colors.bck,
+       textAlign: "center",
        padding: YOU_TAG.padding.desktop
     }}>you</H5>
   )

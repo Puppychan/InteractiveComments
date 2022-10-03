@@ -3,8 +3,7 @@ import { ImageButton } from './Buttons.style'
 const VoteButton = ({colors, size, icon, onClick, disabled=false}) => {
   return (
     <ImageButton 
-    colorBtn={colors.btn}
-    colorBtnHover={colors.btnHover}
+    color={colors}
     onClick={onClick} 
     width={size} 
     height={size}

@@ -4,7 +4,7 @@ import { FlexCenterColumn } from "../../Style/GeneralStyled";
 import { CORNER_RADIUS } from "../../Style/ConstantStyled";
 
 const VoteContainer = styled.div`
-  grid-area: vote;
+  grid-area: ${props => props.gridArea};
   ${FlexCenterColumn}
   gap: ${props => props.gap};
   
