@@ -1,7 +1,7 @@
 import React from 'react'
 import { BUTTONS } from '../../Style/ConstantStyled'
 import { SubmitButton } from './Buttons.style'
-const ConfirmButton = ({text, gridArea, form}) => {
+const ConfirmButton = ({text, gridArea, form, disabled}) => {
   return (
     <SubmitButton
       color={BUTTONS.submit.colors}
@@ -10,6 +10,7 @@ const ConfirmButton = ({text, gridArea, form}) => {
       weight={BUTTONS.submit.weight}
       borderRadius={BUTTONS.submit.borderRadius}
       gridArea={gridArea}
+      disabled={disabled}
       type="submit"
       form={form}>
       {text.toUpperCase()}

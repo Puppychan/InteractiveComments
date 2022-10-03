@@ -14,12 +14,14 @@ import Avatar from "./Avatar/Avatar"
 import OtherButton from './Buttons/OtherButton'
 import YouTag from './Comment/YouTag'
 import ReplyTag from './Comment/ReplyTag'
+import { createPortal } from 'react-dom'
 
 const Card = ({ id, type, replies = [], isWriteComment = false }) => {
   // isUser for checking if this comment belongs to the user
   // context
   const { comments, setComments, currentUser } = useContext(CommentsContext)
   const [isEdit, setIsEdit] = useState(false)
+  const [disabled, setDisabled] = useState(true)
   const contentRef = useRef(null)
   // index of that comments
   const index = useMemo(() => findIndexById(type == "reply" ? replies : comments, id))
@@ -35,6 +37,10 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
       const parentCommentIndex = findParentIndexByReplyId(comments, id)
       newComments[parentCommentIndex].replies[index] = comment
     }
+    else {
+      newComments[index] = comment
+    }
+    setComments(newComments)
   }, [comment])
   
 
@@ -44,10 +50,18 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
   }
   const submit = () => {
     setIsEdit(false)
-    setTemplate(defaultTemplate)
-    // edit comment
-    setComment({...comment, content: contentRef.current.value})
+      setTemplate(defaultTemplate)
+      // edit comment
+      setComment({...comment, content: contentRef.current.value})
     
+  }
+  const onInputText = () => {
+    if (contentRef.current.value == contentRef.current.defaultValue) {
+      setDisabled(true)
+    }
+    else {
+      setDisabled(false)
+    }
   }
 
   return (
@@ -83,8 +97,8 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
         <>
           <form action="" onSubmit={submit} id="form-card"></form>
           {isUser && <YouTag gridArea="you" />}
-          <TextArea ref={contentRef} gridArea="content" defaultValue={comment.content} style={constStyle.TEXTAREA} />
-          <ConfirmButton text="update" gridArea="btn" form="form-card"/>
+          <TextArea ref={contentRef} gridArea="content" onChange={onInputText} defaultValue={comment.content} style={constStyle.TEXTAREA} />
+          <ConfirmButton disabled={disabled} text="update" gridArea="btn" form="form-card"/>
         </>
       )}
 
