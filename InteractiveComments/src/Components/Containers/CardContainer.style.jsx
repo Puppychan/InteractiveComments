@@ -12,11 +12,17 @@ export const CardContainer = styled.div`
     
 
     ${props => (props.type == "read" || props.typed == 'reply') && `
-        grid-template: ${CARD.read.gridTemplate.desktop};
-        gap: ${CARD.read.sizes.gap};
-        width: ${CARD.read.sizes.width.desktop};
+        gap: ${CARD.main.sizes.gap};
+
+        width: ${CARD.main.sizes.width.desktop};
     `}
     ${props => props.type == "reply" && `
         width: ${CARD.reply.sizes.width.desktop};
+    `}
+
+    ${props => !props.isUser ? `
+        grid-template: ${CARD.peopleComment.gridTemplate.desktop}; 
+    ` : `
+        grid-template: ${CARD.userComment.gridTemplate.desktop}; 
     `}
 `

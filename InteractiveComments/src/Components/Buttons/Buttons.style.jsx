@@ -25,14 +25,15 @@ export const ImageButton = styled(Button)`
     }
 `
 export const TextIconButton = styled(Button)`
-    fill: ${props => props.color};
-    color: ${props => props.color};
+    fill: ${props => props.color.btn};
+    color: ${props => props.color.btn};
 
     ${FlexCenter}
     gap: ${props => props.gap};
 
     grid-area: ${props => props.gridArea};
     &:hover {
-      opacity: 0.5;
+        fill: ${props => props.color.btnHover};
+        color: ${props => props.color.btnHover};
     }
 `

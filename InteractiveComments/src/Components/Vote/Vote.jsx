@@ -1,7 +1,6 @@
 import React, { useContext, useMemo, useState } from 'react'
 
 import { CommentsContext } from "../../Helpers/Contexts"
-import { findIndexById } from "../../Controllers/CommentController"
 
 import VoteContainer from '../Containers/VoteContainer.style'
 import VoteButton from '../Buttons/VoteButton'

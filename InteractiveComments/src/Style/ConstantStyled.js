@@ -20,7 +20,11 @@ export const COLORS = {
     date: grayishBlue,
     content: grayishBlue,
     replyBtn: moderateBlue,
-    cardBck: white
+    cardBck: white,
+    youTag: {
+        bck: moderateBlue,
+        text: white
+    }
 }
 
 export const LIGHT_FONT = 400;
@@ -36,8 +40,43 @@ export const MAIN_PAGE = {
 }
 export const BUTTONS = {
     reply: {
-        color: moderateBlue,
+        colors: {
+            btn: moderateBlue,
+            btnHover: lightGrayishBlue,
+        },
         text: "Reply",
+        gap: BUTTON_GAP,
+        size: {
+            width: {
+                desktop: "100%"
+            },
+            height: {
+                desktop: "2em"
+            }
+        }
+    },
+    edit: {
+        colors: {
+            btn: moderateBlue,
+            btnHover: lightGrayishBlue,
+        },
+        text: "Edit",
+        gap: BUTTON_GAP,
+        size: {
+            width: {
+                desktop: "100%"
+            },
+            height: {
+                desktop: "2em"
+            }
+        }
+    },
+    delete: {
+        colors: {
+            btn: softRed,
+            btnHover: paleRed,
+        },
+        text: "Delete",
         gap: BUTTON_GAP,
         size: {
             width: {
@@ -51,18 +90,12 @@ export const BUTTONS = {
 }
 
 export const CARD = {
-    read: {
+    main: {
         sizes: {
             width: {
                 desktop: "55%",
             },
             gap: "1em"
-        },
-        gridTemplate: {
-            desktop: 
-            `"vote avatar name date . reply" auto
-            "vote content content content content content" auto /
-            auto auto auto 1fr 1fr 1fr`
         }
     },
     reply: {
@@ -72,11 +105,36 @@ export const CARD = {
             },
         }
     },
+
+    peopleComment: {
+        gridTemplate: {
+            desktop: 
+            `"vote avatar name date . reply" auto
+            "vote content content content content content" auto /
+            auto auto auto 1fr 1fr 1fr`
+        }
+    },
+    userComment: {
+        gridTemplate: {
+            desktop: 
+            `"vote avatar name you date delete edit" auto
+            "vote content content content content content content" auto /
+            auto auto auto 0.2fr 1.2fr 1fr 1fr`
+        }
+    },
     backgroundColor: COLORS.cardBck,
     borderRadius: CORNER_RADIUS,
     padding: {
         desktop: "1.9em 1.5em"
     },
+}
+export const YOU_TAG = {
+    colors: COLORS.youTag,
+    text: "you",
+    weight: REGULAR_FONT,
+    padding: {
+        desktop: "0.1em 0.4em"
+    }
 }
 
 export const VOTE = {
