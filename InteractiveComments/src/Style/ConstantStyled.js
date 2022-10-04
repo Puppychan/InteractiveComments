@@ -51,7 +51,7 @@ export const SMALL_CORNER_RADIUS = "10px";
 const BUTTON_GAP = '0.6em'
 export const MAIN_PAGE = {
     gap: "1.5em",
-    padding: "1.5em 1em",
+    padding: "10em 1em",
 }
 export const BUTTONS = {
     reply: {
