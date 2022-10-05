@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
-import { checkRepliesNotEmpty } from '../../Controllers/CommentController'
-import { CommentsContext } from '../../Helpers/Contexts'
+import { checkRepliesNotEmpty } from '../Controllers/CommentController'
+import { CommentsContext } from '../Helpers/Contexts'
 
 import Replies from './Replies'
-import Card from "../Card"
-import { CommentContainer } from '../Containers/CommentContainer.style'
+import Card from "./Card"
+import { CommentContainer } from './Containers/CommentContainer.style'
 
 const Comments = () => {
   const {comments} = useContext(CommentsContext)

@@ -11,10 +11,9 @@ import * as constStyle from "../../Style/ConstantStyled"
 import { ReactComponent as MinusIcon } from "../../assets/icon-minus.svg"
 import { ReactComponent as PlusIcon } from "../../assets/icon-plus.svg"
 
-const Vote = ({ index, gridArea }) => {
+const Vote = ({ comment, gridArea }) => {
   // context
   const { comments, setComments } = useContext(CommentsContext)
-  const [score, setScore] = useState(comments[index].score)
 
   // attribute styling
   const vote = constStyle.VOTE
@@ -27,15 +26,13 @@ const Vote = ({ index, gridArea }) => {
     const updatedComments = [...comments]
     updatedComments[index].score = score + 1
     setComments(updatedComments)
-    setScore(score + 1)
   }
 
   const decrease = () => {
-    if (score != 0) {
+    if (comment.score != 0) {
       const updatedComments = [...comments]
       updatedComments[index].score = score - 1
       setComments(updatedComments)
-      setScore(score - 1)
     }
   }
 
@@ -45,14 +42,14 @@ const Vote = ({ index, gridArea }) => {
       widthBtn={buttonSize}
       heightBtn={buttonSize}
       minWidth={vote.sizes.width}
-      width={`${String(score).length * parseInt(fontSize.desktop)}em`}
+      width={`${String(comment.score).length * parseInt(fontSize.desktop)}em`}
       padding={vote.padding}
       gap={vote.gap}
       colorScore={colors.score}
       bckColor={colors.bck}>
       <VoteButton colors={colors} size={buttonSize} onClick={increase} icon={<PlusIcon />} />
-      <H4>{score}</H4>
-      <VoteButton disabled={score == 0} colors={colors} size={buttonSize} onClick={decrease} icon={<MinusIcon />} />
+      <H4>{comment.score}</H4>
+      <VoteButton disabled={comment.score == 0} colors={colors} size={buttonSize} onClick={decrease} icon={<MinusIcon />} />
     </VoteContainer>
   )
 }

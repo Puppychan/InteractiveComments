@@ -22,5 +22,8 @@ const GlobalStyled = createGlobalStyle`
 
         background-color: ${COLORS.bck};
     }
+    #root > div {
+        width: 65%;
+    }
 `
 export default GlobalStyled;

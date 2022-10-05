@@ -1,20 +1,13 @@
 import React, { useContext, useMemo, useState, useRef, useEffect } from 'react'
 
-import { CommentsContext } from "../Helpers/Contexts"
+import { CommentsContext, CardContext } from "../Helpers/Contexts"
 import { findIndexById, findParentIndexByReplyId } from "../Controllers/CommentController"
 
-import * as constStyle from "../Style/ConstantStyled"
-
-import { TextArea } from './Comment/TextArea.style'
-import ConfirmButton from './Buttons/ConfirmButton'
 import { CardContainer } from './Containers/CardContainer.style'
-import { H4, H5, P } from '../Style/GeneralStyled'
-import Vote from './Vote/Vote'
-import Avatar from "./Avatar/Avatar"
-import OtherButton from './Buttons/OtherButton'
-import YouTag from './Comment/YouTag'
-import ReplyTag from './Comment/ReplyTag'
-import { createPortal } from 'react-dom'
+import SideInfoComment from './Comment/SideInfoComment'
+import MainInfoComment from './Comment/MainInfoComment'
+
+import Modal from './Modal/Modal'
 
 const Card = ({ id, type, replies = [], isWriteComment = false }) => {
   // isUser for checking if this comment belongs to the user
@@ -22,6 +15,7 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
   const { comments, setComments, currentUser } = useContext(CommentsContext)
   const [isEdit, setIsEdit] = useState(false)
   const [disabled, setDisabled] = useState(true)
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const contentRef = useRef(null)
   // index of that comments
   const index = useMemo(() => findIndexById(type == "reply" ? replies : comments, id))
@@ -31,10 +25,11 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
   const defaultTemplate = !isUser ? "peopleComment" : "userComment"
   const [template, setTemplate] = useState(defaultTemplate)
 
+  // update comments list when successfully update comment
   useEffect(() => {
     const newComments = [...comments]
+    const parentCommentIndex = findParentIndexByReplyId(comments, id)
     if (type == "reply") {
-      const parentCommentIndex = findParentIndexByReplyId(comments, id)
       newComments[parentCommentIndex].replies[index] = comment
     }
     else {
@@ -42,19 +37,22 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
     }
     setComments(newComments)
   }, [comment])
-  
 
+  // when click edit button
   const edit = () => {
     setIsEdit(true)
     setTemplate("updateComment")
   }
+
+  // when click confirm button after changing
   const submit = () => {
     setIsEdit(false)
-      setTemplate(defaultTemplate)
-      // edit comment
-      setComment({...comment, content: contentRef.current.value})
-    
+    setTemplate(defaultTemplate)
+    // edit comment
+    setComment({ ...comment, content: contentRef.current.value })
+
   }
+  // check when user presses key onto Textarea
   const onInputText = () => {
     if (contentRef.current.value == contentRef.current.defaultValue) {
       setDisabled(true)
@@ -64,49 +62,47 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
     }
   }
 
+  //check if open modal
+  const clickOpenDeleteModal = () => {
+    setIsOpenDeleteModal(true)
+  }
+  const clickCloseDeleteModal = () => {
+    setIsOpenDeleteModal(false)
+  }
+  const deleteComment = () => {
+    if (type != "reply") {
+      setComments(comments.filter(comment => comment !== comments[index]))
+    }
+    else {
+      const newComments = [...comments]
+      const parentCommentIndex = findParentIndexByReplyId(comments, id)
+      // remove reply item
+      newComments[parentCommentIndex].replies.splice(index, 1)
+      setComments(newComments)
+    }
+  }
+  const handleEvent = {
+    edit: edit,
+    submit: submit,
+    onInputText: onInputText,
+    clickOpenDeleteModal: clickOpenDeleteModal
+  }
+
   return (
-    <CardContainer type={type} template={template}>
-      <Vote gridArea="vote" index={index} />
-      <Avatar gridArea="avatar" username={comment.user.username} />
-      <H4 gridArea="name" color={constStyle.COLORS.username} weight={constStyle.REGULAR_FONT}>{comment.user.username}</H4>
-      <H5 gridArea="date" color={constStyle.COLORS.date} weight={constStyle.LIGHT_FONT}>{comment.createdAt}</H5>
+    <CardContext.Provider value={{ contentRef, disabled, isEdit }}>
+      <CardContainer type={type} template={template}>
+        <SideInfoComment
+          comment={comment}
+          isUser={isUser}
+          handleEvent={handleEvent}
+          isEdit={isEdit} />
+        <MainInfoComment
+          type={type} comment={comment} handleEvent={handleEvent}
+        />
+        {isOpenDeleteModal && <Modal closeModalEvent={clickCloseDeleteModal} confirmEvent={deleteComment} />}
 
-      {!isEdit ? (
-        <>
-          <P gridArea="content" color={constStyle.COLORS.content}>
-            {type == "reply" && <ReplyTag replyTo={comment.replyingTo} />}
-            {comment.content}
-          </P>
-          {!isUser ? (
-            <OtherButton type={constStyle.BUTTONS.reply}
-              gridArea="reply"
-              onClick={() => { console.log("hello") }} />
-          ) : (
-            <>
-              <YouTag gridArea="you" />
-              <OtherButton type={constStyle.BUTTONS.edit}
-                gridArea="edit"
-                onClick={edit} />
-              <OtherButton type={constStyle.BUTTONS.delete}
-                gridArea="delete"
-                onClick={() => { console.log("hello") }} />
-            </>
-          )}
-        </>
-      ) : (
-        <>
-          <form action="" onSubmit={submit} id="form-card"></form>
-          {isUser && <YouTag gridArea="you" />}
-          <TextArea ref={contentRef} gridArea="content" onChange={onInputText} defaultValue={comment.content} style={constStyle.TEXTAREA} />
-          <ConfirmButton disabled={disabled} text="update" gridArea="btn" form="form-card"/>
-        </>
-      )}
-
-
-
-
-
-    </CardContainer>
+      </CardContainer>
+    </CardContext.Provider>
   )
 }
 

@@ -38,7 +38,20 @@ export const COLORS = {
         btn: softRed,
         btnHover: paleRed
     },
-    divider: lightGray
+    divider: lightGray,
+    pairPrimaryBtn: {
+        btn: softRed,
+        text: veryLightGray
+    },
+    pairSecondaryBtn: {
+        btn: grayishBlue,
+        text: veryLightGray
+    },
+    modal: {
+        bck: white,
+        header: darkBlue,
+        content: grayishBlue
+    }
 }
 
 export const LIGHT_FONT = 400;
@@ -47,6 +60,8 @@ export const BOLD_FONT = 700;
 
 export const CORNER_RADIUS = "15px";
 export const SMALL_CORNER_RADIUS = "10px";
+
+export const GRID_PERCENT_REPLY_MAIN = "0.2fr"
 
 const BUTTON_GAP = '0.6em'
 export const MAIN_PAGE = {
@@ -97,7 +112,6 @@ export const BUTTONS = {
         colors: COLORS.submit,
         weight: BOLD_FONT,
         size: {
-            padding: "0.5em 1em",
             width: {
                 desktop: "50%"
             },
@@ -106,16 +120,48 @@ export const BUTTONS = {
             }
         },
         borderRadius: SMALL_CORNER_RADIUS
+    },
+    pairSecondaryDelete: {
+        text: "No, Cancel",
+        colors: COLORS.pairSecondaryBtn,
+        weight: BOLD_FONT,
+        size: {
+            width: {
+                desktop: "50%"
+            },
+            height: {
+                desktop: "4em"
+            }
+        },
+        borderRadius: SMALL_CORNER_RADIUS
+    },
+    pairPrimaryDelete: {
+        text: "Yes, Delete",
+        colors: COLORS.pairPrimaryBtn,
+        weight: BOLD_FONT,
+        size: {
+            width: {
+                desktop: "50%"
+            },
+            height: {
+                desktop: "4em"
+            }
+        },
+        borderRadius: SMALL_CORNER_RADIUS
     }
 }
 
 export const CARD = {
+    // width of main and reply may be removed later
     main: {
         sizes: {
             width: {
                 desktop: "55%",
             },
-            gap: "1em"
+            gap: "0.4em",
+            padding: {
+                desktop: "1.9em 1.1em"
+            },
         }
     },
     reply: {
@@ -123,7 +169,10 @@ export const CARD = {
             width: {
                 desktop: "100%",
             },
-            gap: "0.5em"
+            gap: "0.5em",
+            padding: {
+                desktop: "1.9em 1.2em"
+            },
         }
     },
 
@@ -149,24 +198,24 @@ export const CARD = {
     peopleComment: {
         gridTemplate: {
             desktop: 
-            `"vote avatar name date . reply" auto
-            "vote content content content content content" auto /
-            auto auto auto 1fr auto auto`
+            `"vote avatar name date . otherBtn" auto
+            "vote content content content content content" auto
+            ". content content content content content" auto /
+            ${GRID_PERCENT_REPLY_MAIN} auto auto auto auto 1fr`
         }
     },
     userComment: {
         gridTemplate: {
             desktop: 
-            `"vote avatar name you date delete edit" auto
-            "vote content content content content content content" auto /
-            auto auto auto 0.2fr 1fr auto auto`
+            `"vote avatar name you date otherBtn" auto
+            "vote content content content content content" auto 
+            ". content content content content content" auto /
+            ${GRID_PERCENT_REPLY_MAIN} auto auto auto auto 1fr`
         }
     },
     backgroundColor: COLORS.cardBck,
     borderRadius: CORNER_RADIUS,
-    padding: {
-        desktop: "1.9em 1.5em"
-    },
+    
 }
 export const YOU_TAG = {
     colors: COLORS.youTag,
@@ -227,6 +276,24 @@ export const TEXTAREA = {
     colors: {
         border: moderateBlue,
         text: darkBlue
+    }
+}
+
+export const MODAL = {
+    colors: COLORS.modal,
+    size: {
+        width: {
+            desktop: "40vw"
+        },
+        height: {
+            desktop: "30vh"
+        }
+    },
+    header: "Delete comment",
+    content: "Are you sure you want to delete this comment? This will remove the comment and can't be undone",
+    btns: {
+        primary: BUTTONS.pairPrimaryDelete,
+        secondary: BUTTONS.pairSecondaryDelete
     }
 }
 

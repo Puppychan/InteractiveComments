@@ -3,7 +3,7 @@ import GlobalStyled from './Style/GlobalStyled'
 import {CommentsContext} from "./Helpers/Contexts"
 import JsonData from "./Resources/data.json"
 
-import Comments from "./Components/Comment/Comments"
+import Comments from "./Components/Comments"
 
 function App() {
   const [comments, setComments] = useState(JsonData.comments)

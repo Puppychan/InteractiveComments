@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { CARD } from "../../Style/ConstantStyled";
+import { CARD, VOTE } from "../../Style/ConstantStyled";
 
 export const CardContainer = styled.div`
     display: grid;
@@ -8,16 +8,19 @@ export const CardContainer = styled.div`
     align-items: center;
     background-color: ${CARD.backgroundColor};
     border-radius: ${CARD.borderRadius};
-    padding: ${CARD.padding.desktop};
-    
+    width: 100%;
 
     ${props => (props.type == "read") && `
         gap: ${CARD.main.sizes.gap};
-        width: ${CARD.main.sizes.width.desktop};
+        padding: ${CARD.main.sizes.padding.desktop};
+        // remove later
+        // width: ${CARD.main.sizes.width.desktop};
     `}
     ${props => props.type == "reply" && `
         gap: ${CARD.reply.sizes.gap};
-        width: ${CARD.reply.sizes.width.desktop};
+        padding: ${CARD.reply.sizes.padding.desktop};
+        // remove later
+        // width: ${CARD.reply.sizes.width.desktop};
     `}
 
     ${props => props.template == "peopleComment" && `
