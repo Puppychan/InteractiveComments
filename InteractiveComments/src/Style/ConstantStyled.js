@@ -185,7 +185,7 @@ export const CARD = {
             auto auto auto 0.2fr 1fr`
         }
     },
-    write: {
+    writeComment: {
         gridTemplate: {
             desktop:
             `"avatar content btn" 1fr

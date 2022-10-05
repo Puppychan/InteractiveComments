@@ -6,19 +6,20 @@ import { findIndexById, findParentIndexByReplyId } from "../Controllers/CommentC
 import { CardContainer } from './Containers/CardContainer.style'
 import SideInfoComment from './Comment/SideInfoComment'
 import MainInfoComment from './Comment/MainInfoComment'
-
+import Avatar from './Avatar/Avatar'
 import Modal from './Modal/Modal'
 
 const Card = ({ id, type, replies = [], isWriteComment = false }) => {
   // isUser for checking if this comment belongs to the user
   // context
-  const { comments, setComments, currentUser } = useContext(CommentsContext)
+  const { comments, setComments, currentUser, currentClickReplies, setCurrentClickReplies } = useContext(CommentsContext)
   const [isEdit, setIsEdit] = useState(false)
   const [disabled, setDisabled] = useState(true)
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const contentRef = useRef(null)
   // index of that comments
   const index = useMemo(() => findIndexById(type == "reply" ? replies : comments, id))
+
   const [comment, setComment] = useState(type == "reply" ? replies[index] : comments[index])
 
   const isUser = comment.user.username.localeCompare(currentUser.username) == 0
@@ -50,7 +51,6 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
     setTemplate(defaultTemplate)
     // edit comment
     setComment({ ...comment, content: contentRef.current.value })
-
   }
   // check when user presses key onto Textarea
   const onInputText = () => {
@@ -66,9 +66,11 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
   const clickOpenDeleteModal = () => {
     setIsOpenDeleteModal(true)
   }
+  // close modal
   const clickCloseDeleteModal = () => {
     setIsOpenDeleteModal(false)
   }
+  // delete comment
   const deleteComment = () => {
     if (type != "reply") {
       setComments(comments.filter(comment => comment !== comments[index]))
@@ -81,11 +83,25 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
       setComments(newComments)
     }
   }
+
+  const clickReply = () => {
+    if (currentClickReplies.has(id)) {
+      
+    }
+    else {
+      const newSet = currentClickReplies.add(id)
+      setCurrentClickReplies(newSet)
+      console.log("add successfully");
+    }
+
+  }
+
   const handleEvent = {
     edit: edit,
     submit: submit,
     onInputText: onInputText,
-    clickOpenDeleteModal: clickOpenDeleteModal
+    clickOpenDeleteModal: clickOpenDeleteModal,
+    clickReply: clickReply
   }
 
   return (

@@ -14,3 +14,7 @@ export function findParentIndexByReplyId(comments, id) {
         
     })
 }
+
+export function createComment() {
+    
+};

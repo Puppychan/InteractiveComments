@@ -9,7 +9,7 @@ const OtherButtons = ({ isUser, handleEvent, gridArea }) => {
                 // reply
                 <OtherButton type={constStyle.BUTTONS.reply}
                     gridArea={gridArea}
-                    onClick={() => { console.log("hello") }} />
+                    onClick={handleEvent.clickReply} />
             ) : (
                 <OtherButtonsContainer gridArea={gridArea}>
                     {/* edit */}
