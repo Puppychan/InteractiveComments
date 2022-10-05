@@ -14,7 +14,7 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
   // context
   const { comments, setComments, currentUser, currentClickReplies, setCurrentClickReplies } = useContext(CommentsContext)
   const [isEdit, setIsEdit] = useState(false)
-  const [disabled, setDisabled] = useState(true)
+
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const contentRef = useRef(null)
   // index of that comments
@@ -26,41 +26,12 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
   const defaultTemplate = !isUser ? "peopleComment" : "userComment"
   const [template, setTemplate] = useState(defaultTemplate)
 
-  // update comments list when successfully update comment
-  useEffect(() => {
-    const newComments = [...comments]
-    const parentCommentIndex = findParentIndexByReplyId(comments, id)
-    if (type == "reply") {
-      newComments[parentCommentIndex].replies[index] = comment
-    }
-    else {
-      newComments[index] = comment
-    }
-    setComments(newComments)
-  }, [comment])
-
   // when click edit button
   const edit = () => {
     setIsEdit(true)
     setTemplate("updateComment")
   }
 
-  // when click confirm button after changing
-  const submit = () => {
-    setIsEdit(false)
-    setTemplate(defaultTemplate)
-    // edit comment
-    setComment({ ...comment, content: contentRef.current.value })
-  }
-  // check when user presses key onto Textarea
-  const onInputText = () => {
-    if (contentRef.current.value == contentRef.current.defaultValue) {
-      setDisabled(true)
-    }
-    else {
-      setDisabled(false)
-    }
-  }
 
   //check if open modal
   const clickOpenDeleteModal = () => {
@@ -98,22 +69,18 @@ const Card = ({ id, type, replies = [], isWriteComment = false }) => {
 
   const handleEvent = {
     edit: edit,
-    submit: submit,
-    onInputText: onInputText,
     clickOpenDeleteModal: clickOpenDeleteModal,
     clickReply: clickReply
   }
 
   return (
-    <CardContext.Provider value={{ contentRef, disabled, isEdit }}>
+    <CardContext.Provider value={{ contentRef, isEdit, setTemplate, comment, setComment, setIsEdit }}>
       <CardContainer type={type} template={template}>
         <SideInfoComment
-          comment={comment}
           isUser={isUser}
-          handleEvent={handleEvent}
-          isEdit={isEdit} />
+          handleEvent={handleEvent}/>
         <MainInfoComment
-          type={type} comment={comment} handleEvent={handleEvent}
+          type={type} index={index} defaultTemplate={defaultTemplate}
         />
         {isOpenDeleteModal && <Modal closeModalEvent={clickCloseDeleteModal} confirmEvent={deleteComment} />}
 

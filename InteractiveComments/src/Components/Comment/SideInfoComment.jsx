@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React, {useContext} from 'react'
+import { CardContext } from '../../Helpers/Contexts'
 import * as constStyle from "../../Style/ConstantStyled"
 
 import Vote from '../Vote/Vote'
@@ -8,7 +8,8 @@ import Avatar from ".././Avatar/Avatar"
 import OtherButtons from "./OtherButtons"
 import YouTag from '.././Comment/YouTag'
 
-const SideInfoComment = ({ comment, isUser, handleEvent, isEdit}) => {
+const SideInfoComment = ({ isUser, handleEvent}) => {
+  const {comment, isEdit} = useContext(CardContext)
   return (
     <>
         <Avatar gridArea="avatar" username={comment.user.username} />
