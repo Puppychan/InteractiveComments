@@ -6,6 +6,7 @@ import JsonData from "./Resources/data.json"
 import Comments from "./Components/Comments"
 
 function App() {
+
   const [comments, setComments] = useState(JsonData.comments)
   const [currentClickReplies, setCurrentClickReplies] = useState(new Set())
   const currentUser = JsonData.currentUser

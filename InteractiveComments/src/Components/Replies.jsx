@@ -1,14 +1,24 @@
-import React from 'react'
+import React, {useContext, useEffect, Fragment} from 'react'
+import { CommentsContext } from '../Helpers/Contexts'
 
 import { VerticalDivider, VerticalDividerContainer } from './Comment/VerticalDivider.styled'
 import { CommentContainer } from './Containers/CommentContainer.style'
 import { RepliesContainer } from './Containers/RepliesContainer.style'
-import Card from './Card'
+import { ReplyCommentCard, WriteReplyCard } from './CardType'
 
 const Replies = ({ comment }) => {
+  const { currentClickReplies, setCurrentClickReplies} = useContext(CommentsContext)
+
+
   const replyComponents = (comment) => {
     return comment["replies"].map((reply) => {
-      return <Card gridArea="card" key={reply.id} id={reply.id} replies={comment.replies} type="reply" />
+      return (
+        <Fragment key={reply.id}>
+          <ReplyCommentCard comment={comment} reply={reply}/>
+          {currentClickReplies.has(reply.id) &&  <WriteReplyCard comment={comment} reply={reply}/>}
+        </Fragment>
+      
+      )
     })
   }
   return (

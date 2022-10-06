@@ -32,5 +32,8 @@ export const CardContainer = styled.div`
     ${props => props.template == "updateComment" && `
         grid-template: ${CARD.updateComment.gridTemplate.desktop}; 
     `}
+    ${props => props.template == "writeReply" && `
+        grid-template: ${CARD.writeReply.gridTemplate.desktop}; 
+    `}
     
 `

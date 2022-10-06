@@ -1,6 +1,7 @@
 import React, { useContext, useMemo, useState } from 'react'
 
 import { CommentsContext } from "../../Helpers/Contexts"
+import { setNewCommentsChange } from '../../Controllers/CommentController'
 
 import VoteContainer from '../Containers/VoteContainer.style'
 import VoteButton from '../Buttons/VoteButton'
@@ -11,7 +12,7 @@ import * as constStyle from "../../Style/ConstantStyled"
 import { ReactComponent as MinusIcon } from "../../assets/icon-minus.svg"
 import { ReactComponent as PlusIcon } from "../../assets/icon-plus.svg"
 
-const Vote = ({ comment, gridArea }) => {
+const Vote = ({ comment, gridArea, index, type }) => {
   // context
   const { comments, setComments } = useContext(CommentsContext)
 
@@ -23,16 +24,12 @@ const Vote = ({ comment, gridArea }) => {
 
   // event clicks function
   const increase = () => {
-    const updatedComments = [...comments]
-    updatedComments[index].score = score + 1
-    setComments(updatedComments)
+    setNewCommentsChange(type, "increaseVote", comments, setComments, comment, index)
   }
 
   const decrease = () => {
     if (comment.score != 0) {
-      const updatedComments = [...comments]
-      updatedComments[index].score = score - 1
-      setComments(updatedComments)
+      setNewCommentsChange(type, "decreaseVote", comments, setComments, comment, index)
     }
   }
 

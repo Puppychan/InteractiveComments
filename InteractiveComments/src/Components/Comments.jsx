@@ -1,24 +1,24 @@
-import React, {useContext} from 'react'
+import React, {Fragment, useContext, useEffect} from 'react'
 import { checkRepliesNotEmpty } from '../Controllers/CommentController'
 import { CommentsContext } from '../Helpers/Contexts'
 
 import Replies from './Replies'
-import Card from "./Card"
+import { ReadCommentCard, WriteReplyCommentCard } from './CardType'
 import { CommentContainer } from './Containers/CommentContainer.style'
 
 const Comments = () => {
-  const {comments} = useContext(CommentsContext)
-  
+  const {comments, currentClickReplies, setCurrentClickReplies} = useContext(CommentsContext)
 
   return (
     <CommentContainer>
       {comments.map((comment) => {
         const isRepliesNotEmpty = checkRepliesNotEmpty(comment)
         return (
-          <>
-            <Card key={comment.id} id={comment.id} type="read"/>
+          <Fragment key={comment.id}>
+            <ReadCommentCard comment={comment}/>
+            {currentClickReplies.has(comment.id) &&  <WriteReplyCommentCard comment={comment}/>}
             {isRepliesNotEmpty && <Replies comment={comment}/>}
-          </>
+          </Fragment>
         )
       })}
       
