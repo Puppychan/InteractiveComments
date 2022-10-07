@@ -18,12 +18,13 @@ function App() {
 
     // load from local storage
     const localStoreItems = localStorage.getItem('comments')
+    // if already exist
     if (localStoreItems.length != 2) {
-      // if already exist
       const items = JSON.parse(localStoreItems)
       setComments(items)
       // setComments(JsonData.comments)
     }
+    // if not exist in storage
     else {
       localStorage.setItem('comments', JSON.stringify(JsonData.comments))
       setComments(JsonData.comments)
@@ -49,6 +50,8 @@ function App() {
   }, [])
 
   useEffect(() => {
+    console.log(comments);
+    // update storage when update comments
     localStorage.setItem('comments', JSON.stringify(comments))
   }, [comments])
 

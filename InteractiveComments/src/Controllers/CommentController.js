@@ -23,12 +23,20 @@ export function setNewCommentsChange(type="general", action, comments, setCommen
     if (type == "read") {
         const newComments = [...comments]
         switch (action) {
-            case "decreaseVote":
             case "undoIncreaseVote":
+                newComments[index].hasVoted = "none"
                 newComments[index].score = comment.score - 1
                 break
-            case "increaseVote":
+            case "decreaseVote":
+                newComments[index].hasVoted = "decrease"
+                newComments[index].score = comment.score - 1
+                break
             case "undoDecreaseVote":
+                newComments[index].hasVoted = "none"
+                newComments[index].score = comment.score + 1
+                break
+            case "increaseVote":
+                newComments[index].hasVoted = "increase"
                 newComments[index].score = comment.score + 1
                 break
             case "deleteComment":
@@ -52,11 +60,21 @@ export function setNewCommentsChange(type="general", action, comments, setCommen
         // that's why declare comment
         const parentCommentIndex = findParentIndexByReplyId(comments, comment.id)
         switch (action) {
+            case "undoIncreaseVote":
+                newComments[parentCommentIndex].replies[index].hasVoted = "none"
+                newComments[parentCommentIndex].replies[index].score = comment.score - 1
+                break
             case "decreaseVote":
                 newComments[parentCommentIndex].replies[index].score = comment.score - 1
+                newComments[parentCommentIndex].replies[index].hasVoted = "decrease"
+                break
+            case "undoDecreaseVote":
+                newComments[parentCommentIndex].replies[index].hasVoted = "none"
+                newComments[parentCommentIndex].replies[index].score = comment.score + 1
                 break
             case "increaseVote":
                 newComments[parentCommentIndex].replies[index].score = comment.score + 1
+                newComments[parentCommentIndex].replies[index].hasVoted = "increase"
                 break
             case "deleteComment":
                 // remove reply item
