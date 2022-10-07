@@ -13,6 +13,7 @@ export const COLORS = {
     vote: {
         btn: lightGrayishBlue,
         btnHover: moderateBlue,
+        btnChosen: moderateBlue,
         score: moderateBlue,
         bck: veryLightGray
     },

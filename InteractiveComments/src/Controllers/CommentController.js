@@ -24,9 +24,11 @@ export function setNewCommentsChange(type="general", action, comments, setCommen
         const newComments = [...comments]
         switch (action) {
             case "decreaseVote":
+            case "undoIncreaseVote":
                 newComments[index].score = comment.score - 1
                 break
             case "increaseVote":
+            case "undoDecreaseVote":
                 newComments[index].score = comment.score + 1
                 break
             case "removeComment":

@@ -19,10 +19,11 @@ export const Button = styled.button`
     }
 `
 export const ImageButton = styled(Button)`
-    fill: ${props => props.color.btn};
+    fill: ${({isChosen, color}) => isChosen ? color.btnChosen : color.btn};
     &:not([disabled]):hover {
       fill: ${props => props.color.btnHover};
     }
+    
 `
 export const TextIconButton = styled(Button)`
     fill: ${props => props.color.btn};

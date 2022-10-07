@@ -11,10 +11,6 @@ function App() {
   const [currentClickReplies, setCurrentClickReplies] = useState(new Set())
   const currentUser = JsonData.currentUser
 
-  useEffect(() => {
-    console.log("Yes");
-  }, [comments])
-
   return (
     <CommentsContext.Provider value={{comments, setComments, currentUser, currentClickReplies, setCurrentClickReplies}}>
       <GlobalStyled />
