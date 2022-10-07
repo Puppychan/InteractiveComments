@@ -8,7 +8,6 @@ import { CommentContainer } from './Containers/CommentContainer.style'
 
 const Comments = () => {
   const {comments, currentClickReplies, setCurrentClickReplies} = useContext(CommentsContext)
-
   return (
     <CommentContainer>
       {comments.map((comment) => {

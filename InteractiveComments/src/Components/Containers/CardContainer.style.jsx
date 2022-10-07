@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { CARD, VOTE } from "../../Style/ConstantStyled";
+import { CARD } from "../../Style/ConstantStyled";
 
 export const CardContainer = styled.div`
     display: grid;

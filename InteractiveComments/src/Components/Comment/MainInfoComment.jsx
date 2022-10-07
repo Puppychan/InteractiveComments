@@ -10,7 +10,7 @@ import { TextArea } from '.././Comment/TextArea.style'
 import ConfirmButton from '.././Buttons/ConfirmButton'
 
 const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => {
-  const { comments, setComments } = useContext(CommentsContext)
+  const { comments, setComments, setCurrentClickReplies } = useContext(CommentsContext)
   const { contentRef, isEdit, setTemplate, comment, setComment, setIsEdit } = useContext(CardContext)
   const [disabled, setDisabled] = useState(true)
 
@@ -25,10 +25,12 @@ const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => 
     }
     else if (writeCommentType == "writeReply") {
       if (type != "reply") {
-        const newReply = createReply(contentRef.current.value, comment.replyTo)
+        const newReply = createReply(contentRef.current.value, comment.user.username)
         const newComments = [...comments]
-        newComments[index].replies.append(newReply)
+        newComments[index].replies.push(newReply)
+        setCurrentClickReplies(prev => new Set([...prev].filter(x => x !== comment.id)))
         setComments(newComments)
+        
       }
     }
     else {
@@ -55,12 +57,13 @@ const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => 
         </P>
       ) : (
         <>
-          <form action="" onSubmit={submit} id="form-card"></form>
+          {/* <form action="" onSubmit={submit} id={`form-card${comment.id}`}></form> */}
 
           <TextArea ref={contentRef}
             gridArea="content"
             onChange={onInputText} defaultValue={writeCommentType != "" ? `@${comment.user.username} ` : comment.content} style={constStyle.TEXTAREA} />
-          <ConfirmButton text="update" gridArea="btn" form="form-card" />
+          {/* <ConfirmButton text="update" gridArea="btn" form="form-card"  /> */}
+          <ConfirmButton text="update" gridArea="btn" form="form-card" onClick={submit} />
         </>
       )}
     </>

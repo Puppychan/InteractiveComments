@@ -62,8 +62,11 @@ export function setNewCommentsChange(type, action, comments, setComments, commen
         setComments(newComments)
     }
 }
-export function createReply(content, replyingTo, parentId) {
-
+export function createReply(content, replyingTo) {
+    if (content.trim().indexOf("@") == 0) {
+        const trimContent = content.trim()
+        content = trimContent.slice(trimContent.indexOf(replyingTo) + replyingTo.length, trimContent.length).trim()
+    }
     return {
         "id": uuid(),
         "content": content,

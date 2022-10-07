@@ -38,8 +38,12 @@ const Vote = ({ comment, gridArea, index, type }) => {
       gridArea={gridArea}
       widthBtn={buttonSize}
       heightBtn={buttonSize}
-      minWidth={vote.sizes.width}
-      width={`${String(comment.score).length * parseInt(fontSize.desktop)}em`}
+      // minWidth={vote.sizes.width}
+      // width={`${String(comment.score).length * parseInt(fontSize.desktop)}em`}
+      maxWidth={vote.sizes.width}
+      fontSize={vote.sizes.font}
+      text={comment.score}
+
       padding={vote.padding}
       gap={vote.gap}
       colorScore={colors.score}

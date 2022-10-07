@@ -37,8 +37,7 @@ const Card = ({ id, type, replies = [], writeCommentType = "" }) => {
   }
   const defaultTemplate = findDefaultTemplate()
   const [template, setTemplate] = useState(defaultTemplate)
-
-
+  
   // when click edit button
   const edit = () => {
     setIsEdit(true)

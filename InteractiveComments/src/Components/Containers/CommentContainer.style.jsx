@@ -8,6 +8,7 @@ export const CommentContainer = styled.div`
     gap: ${MAIN_PAGE.gap};
     align-items: ${props => props.type == "reply" && "flex-end"};
     grid-area: ${props => props.gridArea};
+    width: ${props => props.width}
 
 
 `

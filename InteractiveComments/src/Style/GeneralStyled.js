@@ -19,7 +19,9 @@ export const FlexCenterColumn = css`
     ${FlexCenter}
     flex-direction: column;
 `
-
+export const WidthCharacterSize = css`
+    width: max(${({text, fontSize}) => (String(text).length * parseInt(fontSize.desktop))}em, ${props => props.maxWidth.desktop});
+`
 
 export const Font = css`
     font-weight: ${ ({weight}) => weight || constStyle.LIGHT_FONT};
