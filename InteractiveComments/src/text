@@ -1,4 +1,4 @@
- npm install moment --save  
+ npm install moment --save  (inside SideInfo + CommentController)
  npm i react-uuid
 
  localStorage

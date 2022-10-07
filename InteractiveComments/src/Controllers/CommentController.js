@@ -31,7 +31,7 @@ export function setNewCommentsChange(type="general", action, comments, setCommen
             case "undoDecreaseVote":
                 newComments[index].score = comment.score + 1
                 break
-            case "removeComment":
+            case "deleteComment":
                 setComments(comments.filter(comment => comment !== comments[index]))
                 break
             case "editComment":
@@ -43,7 +43,9 @@ export function setNewCommentsChange(type="general", action, comments, setCommen
                 additionalInfo["setCurrentClickReplies"](prev => new Set([...prev].filter(x => x !== comment.id)))
                 break
         }
-        setComments(newComments)
+        if (action != "deleteComment") {
+            setComments(newComments)
+        }
     }
     else if (type == "reply") {
         const newComments = [...comments]
@@ -56,7 +58,7 @@ export function setNewCommentsChange(type="general", action, comments, setCommen
             case "increaseVote":
                 newComments[parentCommentIndex].replies[index].score = comment.score + 1
                 break
-            case "removeComment":
+            case "deleteComment":
                 // remove reply item
                 newComments[parentCommentIndex].replies.splice(index, 1)
                 break
@@ -93,7 +95,7 @@ export function createReply(content, replyingTo) {
     return {
         "id": uuid(),
         "content": content,
-        "createdAt": moment().startOf('second').fromNow(),
+        "createdAt": moment().format(),
         "score": 0,
         "replyingTo": replyingTo,
         "user": {
@@ -110,7 +112,7 @@ export function createComment(content) {
     return {
         "id": uuid(),
         "content": content,
-        "createdAt": moment().startOf('second').fromNow(),
+        "createdAt": moment().format(),
         "score": 0,
         "user": {
           "image": {
