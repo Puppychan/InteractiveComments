@@ -11,7 +11,6 @@ const ConfirmButton = ({text, gridArea, form, disabled, onClick}) => {
       borderRadius={BUTTONS.submit.borderRadius}
       gridArea={gridArea}
       disabled={disabled}
-      type="submit"
       form={form}
       onClick={onClick}>
       {text.toUpperCase()}

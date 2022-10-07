@@ -113,7 +113,7 @@ export const BUTTONS = {
         weight: BOLD_FONT,
         size: {
             width: {
-                desktop: "50%"
+                desktop: "100%"
             },
             height: {
                 desktop: "3em"
@@ -190,7 +190,7 @@ export const CARD = {
             desktop:
             `"avatar content btn" 1fr
             ". content ." 1fr /
-            auto 1fr auto
+            auto 1fr 0.25fr
             `
         }
     },

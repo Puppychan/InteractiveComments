@@ -3,7 +3,7 @@ import { checkRepliesNotEmpty } from '../Controllers/CommentController'
 import { CommentsContext } from '../Helpers/Contexts'
 
 import Replies from './Replies'
-import { ReadCommentCard, WriteReplyCommentCard } from './CardType'
+import { ReadCommentCard, WriteReplyCommentCard, WriteCommentCard } from './CardType'
 import { CommentContainer } from './Containers/CommentContainer.style'
 
 const Comments = () => {
@@ -21,7 +21,8 @@ const Comments = () => {
         )
       })}
       
-      
+      {/* write comment */}
+      <WriteCommentCard />
     </CommentContainer>
   )
 }

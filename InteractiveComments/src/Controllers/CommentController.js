@@ -17,8 +17,10 @@ export function findParentIndexByReplyId(comments, id) {
 
     })
 }
-export function setNewCommentsChange(type, action, comments, setComments, comment, index, updateValue=null) {
-    if (type != "reply") {
+
+
+export function setNewCommentsChange(type="general", action, comments, setComments, comment, index, additionalInfo=null) {
+    if (type == "read") {
         const newComments = [...comments]
         switch (action) {
             case "decreaseVote":
@@ -31,14 +33,17 @@ export function setNewCommentsChange(type, action, comments, setComments, commen
                 setComments(comments.filter(comment => comment !== comments[index]))
                 break
             case "editComment":
-                newComments[index].content = updateValue
+                newComments[index].content = additionalInfo["content"]
                 break
-
-
+            case "createReply":
+                const newReply = createReply(additionalInfo["content"], comment.user.username)
+                newComments[index].replies.push(newReply)
+                additionalInfo["setCurrentClickReplies"](prev => new Set([...prev].filter(x => x !== comment.id)))
+                break
         }
         setComments(newComments)
     }
-    else {
+    else if (type == "reply") {
         const newComments = [...comments]
         // that's why declare comment
         const parentCommentIndex = findParentIndexByReplyId(comments, comment.id)
@@ -56,8 +61,24 @@ export function setNewCommentsChange(type, action, comments, setComments, commen
             case "editComment":
                 newComments[parentCommentIndex].replies[index].content = updateValue
                 break
+            case "createReply":
+                const newReply = createReply(additionalInfo["content"], comment.user.username)
+                newComments[parentCommentIndex].replies.push(newReply)
+                additionalInfo["setCurrentClickReplies"](prev => new Set([...prev].filter(x => x !== comment.id)))
+                break
+        }
+        setComments(newComments)
+    }
+    else {
+        const newComments = [...comments]
+        switch (action) {
 
-
+            case "createComment":
+                const newComment = createComment(additionalInfo["content"])
+                newComments.push(newComment)
+                break
+            default: 
+                console.log("wrong action inside comment controller")
         }
         setComments(newComments)
     }
@@ -80,6 +101,23 @@ export function createReply(content, replyingTo) {
           },
           "username": "juliusomo"
         }
+    }
+
+}
+export function createComment(content) {
+    return {
+        "id": uuid(),
+        "content": content,
+        "createdAt": moment().startOf('second').fromNow(),
+        "score": 0,
+        "user": {
+          "image": {
+            "png": "./images/avatars/image-juliusomo.png",
+            "webp": "./images/avatars/image-juliusomo.webp"
+          },
+          "username": "juliusomo"
+        },
+        replies: []
     }
 
 }

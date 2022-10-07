@@ -22,3 +22,8 @@ export const WriteReplyCard = ({comment, reply}) => {
         <Card id={reply.id} replies={comment.replies} type="reply" writeCommentType="writeReply"/>
     )
 }
+export const WriteCommentCard = () => {
+  return (
+      <Card type="read" writeCommentType="writeComment"/>
+  )
+}

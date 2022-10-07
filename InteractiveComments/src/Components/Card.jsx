@@ -10,7 +10,7 @@ import MainInfoComment from './Comment/MainInfoComment'
 import Avatar from './Avatar/Avatar'
 import Modal from './Modal/Modal'
 
-const Card = ({ id, type, replies = [], writeCommentType = "" }) => {
+const Card = ({ id = null, type, replies = [], writeCommentType = "" }) => {
   // isUser for checking if this comment belongs to the user
   // context
   const { comments, setComments, currentUser, currentClickReplies, setCurrentClickReplies } = useContext(CommentsContext)
@@ -18,13 +18,11 @@ const Card = ({ id, type, replies = [], writeCommentType = "" }) => {
 
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
   const contentRef = useRef(null)
+  
   // index of that comments
-  //...
   const index = useMemo(() => findIndexById(type == "reply" ? replies : comments, id))
-
-  // ...
-  const [comment, setComment] = useState(type == "reply" ? replies[index] : comments[index])
-  const isUser = comment.user.username.localeCompare(currentUser.username) == 0
+  const [comment, setComment] = useState(index == -1 ? null : (type == "reply" ? replies[index] : comments[index]))
+  const isUser = comment != null ? (comment.user.username.localeCompare(currentUser.username) == 0) : false
 
   //,
   const findDefaultTemplate = () => {
@@ -37,7 +35,7 @@ const Card = ({ id, type, replies = [], writeCommentType = "" }) => {
   }
   const defaultTemplate = findDefaultTemplate()
   const [template, setTemplate] = useState(defaultTemplate)
-  
+
   // when click edit button
   const edit = () => {
     setIsEdit(true)
@@ -78,7 +76,7 @@ const Card = ({ id, type, replies = [], writeCommentType = "" }) => {
       <CardContainer type={type} template={template}>
         <SideInfoComment
           isUser={isUser}
-          handleEvent={handleEvent} type={type} index={index} writeCommentType={writeCommentType}/>
+          handleEvent={handleEvent} type={type} index={index} writeCommentType={writeCommentType} />
         <MainInfoComment
           type={type} index={index} defaultTemplate={defaultTemplate} writeCommentType={writeCommentType}
         />
