@@ -1,2 +1,5 @@
  npm install moment --save  
  npm i react-uuid
+
+ localStorage
+ avoid call useEffect twice -> remove <React.StrictMode></React.StrictMode>
