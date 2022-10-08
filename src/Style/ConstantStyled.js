@@ -300,15 +300,15 @@ export const MODAL = {
 }
 
 // URL
-const AVATAR_URL = "../assets/avatars/image-"
+export const AVATAR_URL = "../../assets/avatars/image-"
 const ICON_URL = "../assets/icon-"
 
 // FUNCTION
-export const getImgUrl = (type, name) => {
-    switch (type) {
-        case "icon":
-            return new URL(`${ICON_URL + name}.svg`, import.meta.url).href 
-        case "avatar":
-            return new URL(`${AVATAR_URL + name}.png`, import.meta.url).href 
-    }
-}
+// export const getImgUrl = (type, name) => {
+//     switch (type) {
+//         case "icon":
+//             return new URL(`${ICON_URL + name}.svg`, import.meta.url).href 
+//         case "avatar":
+//             return new URL(`${AVATAR_URL + name}.png`, import.meta.url).href 
+//     }
+// }

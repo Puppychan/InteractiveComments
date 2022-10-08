@@ -7,5 +7,7 @@
  deploy
  npm install -g netlify-cli
  npm update netlify-cli
+ ntl init
+ ntl deploy --prod
  
  npm i styled-components // install library itself to deploy

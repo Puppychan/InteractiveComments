@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as constStyle from "../../Style/ConstantStyled"
+import {AVATAR_URL} from "../../Style/ConstantStyled"
 // import avatar from "../../assets/avatars/image-juliusomo.png"
 import { AvatarStyle } from './Avatar.style'
 
@@ -8,8 +8,9 @@ const Avatar = ({username, gridArea}) => {
   return (
     <AvatarStyle 
       gridArea={gridArea}
-      src={constStyle.getImgUrl("avatar", username)} 
+      // src={constStyle.getImgUrl("avatar", username)} 
       // src={avatar}
+      src={`${"../../../public/avatars/image-" + username}.png`}
       alt={`${username}'s avatar`} 
     />
   )
