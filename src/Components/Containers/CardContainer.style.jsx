@@ -9,7 +9,6 @@ export const CardContainer = styled.div`
     background-color: ${CARD.backgroundColor};
     border-radius: ${CARD.borderRadius};
     width: 100%;
-    background-color: red;
 
     ${props => (props.type == "read") && `
         gap: ${CARD.main.sizes.gap};
