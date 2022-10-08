@@ -21,5 +21,20 @@
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
     "vite": "^3.1.0"
-  }
+  },
+  "description": "First React Project",
+  "main": "vite.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Puppychan/InteractiveComments.git"
+  },
+  "keywords": [
+    "Interactive"
+  ],
+  "author": "Matsuri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Puppychan/InteractiveComments/issues"
+  },
+  "homepage": "https://github.com/Puppychan/InteractiveComments#readme"
 }
