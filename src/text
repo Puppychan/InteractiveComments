@@ -6,3 +6,4 @@
 
  deploy
  npm install -g netlify-cli
+ npm update netlify-cli
