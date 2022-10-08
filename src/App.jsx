@@ -15,11 +15,12 @@ function App() {
 
   useEffect(() => {
     // first load when run
+  
 
     // load from local storage
     const localStoreItems = localStorage.getItem('comments')
     // if already exist
-    if (localStoreItems.length != 2) {
+    if (localStoreItems && localStoreItems.length != 2) {
       const items = JSON.parse(localStoreItems)
       setComments(items)
       // setComments(JsonData.comments)
