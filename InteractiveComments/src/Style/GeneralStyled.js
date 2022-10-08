@@ -30,14 +30,26 @@ export const Font = css`
 `
 export const H3 = styled.h3`
     ${Font}
+    font-size: 1rem;
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
 `
 export const H4 = styled.h4`
     ${Font}
+    font-size: clamp(1.20rem, calc(1.13rem + 0.36vw), 1.56rem);
 `
 export const H5 = styled.h5`
     ${Font}
-`
-export const P = styled.p`
-    ${Font}
-    line-height: 1.3;
-`
+    font-size: 1rem;
+    font-size: ${constStyle.H5_FONT};
+    `
+    export const P = styled.p`
+        /* font-size: clamp(0.69rem, calc(0.67rem + 0.11vw), 0.80rem); */
+        font-size: clamp(0.83rem, calc(0.80rem + 0.17vw), 1.00rem);
+        ${Font}
+        line-height: 1.3;
+    `
+    export const H6 = styled.h6`
+        font-size: clamp(0.69rem, calc(0.67rem + 0.11vw), 0.80rem);
+        ${Font}
+        line-height: 1.3;
+    `

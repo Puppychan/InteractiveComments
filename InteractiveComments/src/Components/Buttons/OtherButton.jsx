@@ -6,7 +6,7 @@ import { ReactComponent as ReplyIcon } from "../../assets/icon-reply.svg"
 
 import { BOLD_FONT } from '../../Style/ConstantStyled'
 
-import { H3 } from '../../Style/GeneralStyled'
+import { P } from '../../Style/GeneralStyled'
 import { TextIconButton } from './Buttons.style'
 // import { getImgUrl } from '../../Style/ConstantStyled'
 
@@ -16,7 +16,6 @@ const OtherButton = ({type, gridArea, onClick, disabled=false}) => {
     color={type.colors}
     gap={type.gap}
     onClick={onClick} 
-    width={type.size.width} 
     height={type.size.height}
     gridArea={gridArea}
     disabled={disabled}>
@@ -24,7 +23,7 @@ const OtherButton = ({type, gridArea, onClick, disabled=false}) => {
         {type.text == "Edit" && <EditIcon />}
         {type.text == "Delete" && <DeleteIcon />}
         {type.text == "Reply" && <ReplyIcon />}
-        <H3 weight={BOLD_FONT}>{type.text}</H3>
+        <P weight={BOLD_FONT}>{type.text}</P>
     </TextIconButton>
   )
 }

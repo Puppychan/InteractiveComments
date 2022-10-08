@@ -58,6 +58,7 @@ export const COLORS = {
 export const LIGHT_FONT = 400;
 export const REGULAR_FONT = 500;
 export const BOLD_FONT = 700;
+export const H5_FONT = "clamp(1.00rem, calc(0.95rem + 0.25vw), 1.25rem)";
 
 export const CORNER_RADIUS = "15px";
 export const SMALL_CORNER_RADIUS = "10px";

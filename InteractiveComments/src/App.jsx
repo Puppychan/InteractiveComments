@@ -50,7 +50,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    console.log(comments);
     // update storage when update comments
     localStorage.setItem('comments', JSON.stringify(comments))
   }, [comments])

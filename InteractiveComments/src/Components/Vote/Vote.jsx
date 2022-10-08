@@ -5,7 +5,7 @@ import { setNewCommentsChange } from '../../Controllers/CommentController'
 
 import VoteContainer from '../Containers/VoteContainer.style'
 import VoteButton from '../Buttons/VoteButton'
-import { H4 } from '../../Style/GeneralStyled'
+import { H5 } from '../../Style/GeneralStyled'
 
 import { VOTE } from '../../Style/ConstantStyled'
 
@@ -60,7 +60,7 @@ const Vote = ({ comment, gridArea, index, type }) => {
       colorScore={colors.score}
       bckColor={colors.bck}>
       <VoteButton colors={colors} isChosen={isVote == "increase"} size={buttonSize} onClick={increase} icon={<PlusIcon />} />
-      <H4>{comment.score}</H4>
+      <H5>{comment.score}</H5>
 
       <VoteButton disabled={comment.score == 0} isChosen={isVote == "decrease"} colors={colors} size={buttonSize} onClick={decrease} icon={<MinusIcon />} />
     </VoteContainer>

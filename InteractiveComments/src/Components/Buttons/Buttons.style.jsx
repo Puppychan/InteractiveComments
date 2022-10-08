@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { FlexCenter } from "../../Style/GeneralStyled";
 
 export const Button = styled.button`
-    width: ${props => props.width.desktop};
+    width: ${props => props.width ? props.width.desktop : "auto"};
     height: ${props => props.height.desktop};
     
     border: none;
@@ -33,6 +33,7 @@ export const TextIconButton = styled(Button)`
     gap: ${props => props.gap};
 
     grid-area: ${props => props.gridArea};
+    justify-content: flex-end;
     &:hover {
         fill: ${props => props.color.btnHover};
         color: ${props => props.color.btnHover};

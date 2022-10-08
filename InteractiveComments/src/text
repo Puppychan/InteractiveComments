@@ -3,3 +3,6 @@
 
  localStorage
  avoid call useEffect twice -> remove <React.StrictMode></React.StrictMode>
+
+ deploy
+ npm install -g netlify-cli
