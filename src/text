@@ -7,7 +7,11 @@
  deploy
  npm install -g netlify-cli
  npm update netlify-cli
+ npm run build (if cannot run -> npm init first)
  ntl init
  ntl deploy --prod
+
+https://stackoverflow.com/questions/54033765/how-to-give-image-src-dynamically-in-react-js
+ import.meta.url not available for ssr -> move assets to public folder for dynamic url (in Avatar.jsx)
  
  npm i styled-components // install library itself to deploy
