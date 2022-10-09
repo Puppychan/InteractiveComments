@@ -17,6 +17,13 @@ export function findParentIndexByReplyId(comments, id) {
 
     })
 }
+function checkRemovePrefix(content, replyingTo) {
+    if (content.trim().indexOf("@") == 0) {
+        const trimContent = content.trim()
+        content = trimContent.slice(trimContent.indexOf(replyingTo) + replyingTo.length, trimContent.length).trim()
+    }
+    return content.trim()
+}
 
 
 export function setNewCommentsChange(type="general", action, comments, setComments, comment, index, additionalInfo=null) {
@@ -81,7 +88,7 @@ export function setNewCommentsChange(type="general", action, comments, setCommen
                 newComments[parentCommentIndex].replies.splice(index, 1)
                 break
             case "editComment":
-                newComments[parentCommentIndex].replies[index].content = updateValue
+                newComments[parentCommentIndex].replies[index].content = checkRemovePrefix(additionalInfo["content"], comment.replyingTo)
                 break
             case "createReply":
                 const newReply = createReply(additionalInfo["content"], comment.user.username)
@@ -106,10 +113,7 @@ export function setNewCommentsChange(type="general", action, comments, setCommen
     }
 }
 export function createReply(content, replyingTo) {
-    if (content.trim().indexOf("@") == 0) {
-        const trimContent = content.trim()
-        content = trimContent.slice(trimContent.indexOf(replyingTo) + replyingTo.length, trimContent.length).trim()
-    }
+    content = checkRemovePrefix(content, replyingTo)
     return {
         "id": uuid(),
         "content": content,

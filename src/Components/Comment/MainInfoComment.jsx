@@ -1,3 +1,4 @@
+// https://stackoverflow.com/questions/63409339/dont-write-a-character-in-a-textarea-after-a-onkeypress-check
 import React, { useContext, useState } from 'react'
 import { CardContext, CommentsContext } from '../../Helpers/Contexts'
 import { setNewCommentsChange } from '../../Controllers/CommentController'
@@ -16,14 +17,19 @@ const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => 
 
   const buttonType = writeCommentType == "" ? "updateEdit" : "updateWrite"
 
-  const findText = (type) => {
+  const findText = (textareaType) => {
     switch (writeCommentType) {
       case "writeComment" :
-        return type == "defaultValue" ?  "" : "Write Comment..."
+        return textareaType == "defaultValue" ?  "" : "Write Comment..."
       case "writeReply":
-        return type == "defaultValue" ? `@${comment.user.username} ` : "Write Reply..."
+        return textareaType == "defaultValue" ? `@${comment.user.username} ` : "Write Reply..."
       default:
-        return type == "defaultValue" ? comment.content : "Edit Comment..."
+        if (type == "read") {
+          return textareaType == "defaultValue" ? comment.content : "Edit Comment..."
+        } else {
+          const content = `${!comment.content.startsWith(`@${comment["replyingTo"]} `) ? `@${comment["replyingTo"]} ` : ""}${comment.content}`
+          return textareaType == "defaultValue" ? content : "Edit Comment..."
+        }
 
     }
   }
@@ -61,6 +67,8 @@ const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => 
   //   }
       // enter -> submit
       if (event.key == 'Enter' && !event.shiftKey) {
+        // stop input "\n" character when enter for submitting input
+        event.preventDefault()
         submit()
       }
 
@@ -85,7 +93,7 @@ const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => 
 
           <TextArea ref={contentRef}
             gridArea="content"
-            onKeyUp={onInputText} 
+            onKeyDown={onInputText} 
             defaultValue={findText("defaultValue")} placeholder={findText("placeholder")} 
             style={constStyle.TEXTAREA} />
           {/* <ConfirmButton text="update" gridArea="btn" form="form-card"  /> */}
