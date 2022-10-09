@@ -10,7 +10,7 @@ const Avatar = ({username, gridArea}) => {
       gridArea={gridArea}
       // src={constStyle.getImgUrl("avatar", username)} 
       // src={avatar}
-      src={`${"../../../public/avatars/image-" + username}.png`}
+      src={`${"/avatars/image-" + username}.png`}
       alt={`${username}'s avatar`} 
     />
   )
