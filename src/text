@@ -13,5 +13,6 @@
 
 https://stackoverflow.com/questions/54033765/how-to-give-image-src-dynamically-in-react-js
  import.meta.url not available for ssr -> move assets to public folder for dynamic url (in Avatar.jsx)
+ <img src={/folderInPublic/file}/>
  
  npm i styled-components // install library itself to deploy

@@ -23,24 +23,32 @@ const Vote = ({ comment, gridArea, index, type }) => {
   
   // event clicks function
   const increase = () => {
-    if (isVote != "increase") {
-      setNewCommentsChange(type, "increaseVote", comments, setComments, comment, index)
-      setIsVote("increase")
+    if (isVote == "decrease") {
+      setNewCommentsChange(type, "undoDecreaseVote", comments, setComments, comment, index)
+      setIsVote("none")
     }
     else if (isVote == "increase") {
       setNewCommentsChange(type, "undoIncreaseVote", comments, setComments, comment, index)
       setIsVote("none")
     }
+    else if (isVote != "increase") {
+      setNewCommentsChange(type, "increaseVote", comments, setComments, comment, index)
+      setIsVote("increase")
+    }
   }
 
   const decrease = () => {
-    if (isVote != "decrease" && comment.score != 0) {
-      setNewCommentsChange(type, "decreaseVote", comments, setComments, comment, index)
-      setIsVote("decrease")
+    if (isVote == "increase") {
+      setNewCommentsChange(type, "undoIncreaseVote", comments, setComments, comment, index)
+      setIsVote("none")
     }
     else if (isVote == "decrease") {
       setNewCommentsChange(type, "undoDecreaseVote", comments, setComments, comment, index)
       setIsVote("none")
+    }
+    else if (isVote != "decrease" && comment.score != 0) {
+      setNewCommentsChange(type, "decreaseVote", comments, setComments, comment, index)
+      setIsVote("decrease")
     }
   }
 
