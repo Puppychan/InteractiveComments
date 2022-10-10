@@ -7,6 +7,7 @@ const YouTag = ({gridArea}) => {
     color={YOU_TAG.colors.text}
     weight={YOU_TAG.weight}
     style={{
+      maxWidth: "35px",
         gridArea: gridArea,
        backgroundColor: YOU_TAG.colors.bck,
        textAlign: "center",

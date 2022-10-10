@@ -71,7 +71,7 @@ export const MAIN_PAGE = {
         mobile: "3em 1em"
     },
     cardWidth: {
-        desktop: "65%",
+        desktop: "max(50%, 550px)",
         mobile: "100%"
     }
 }
@@ -145,7 +145,7 @@ export const BUTTONS = {
                 desktop: "100%"
             },
             height: {
-                desktop: "3em"
+                desktop: "3.5em"
             }
         },
         borderRadius: SMALL_CORNER_RADIUS
@@ -159,7 +159,7 @@ export const BUTTONS = {
                 desktop: "100%"
             },
             height: {
-                desktop: "3em"
+                desktop: "3.5em"
             }
         },
         borderRadius: SMALL_CORNER_RADIUS
@@ -193,12 +193,12 @@ export const CARD = {
             `"vote avatar name you date" auto
             "vote content content content content" auto
             ". . . . btn" auto /
-            auto auto auto 0.2fr 1fr`,
+            auto auto auto auto 1fr`,
             mobile:
             `"avatar name you date date" auto
             "content content content content content" auto
             "vote vote . . btn" auto /
-            auto auto auto 0.2fr 1fr`
+            auto auto auto auto 1fr`
         }
     },
     writeReply: {
@@ -317,7 +317,7 @@ export const MODAL = {
     colors: COLORS.modal,
     size: {
         width: {
-            desktop: "34vw",
+            desktop: "39vw",
             mobile: "calc(100vw - 2em)"
         },
         padding: {

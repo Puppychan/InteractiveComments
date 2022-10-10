@@ -33,7 +33,7 @@ const SideInfoComment = ({ isUser, handleEvent, type, index, writeCommentType })
           <Avatar gridArea="avatar" username={comment.user.username} />
           <Vote gridArea="vote" comment={comment} type={type} index={index} />
           <P gridArea="name" color={constStyle.COLORS.username} weight={constStyle.REGULAR_FONT}>{comment.user.username}</P>
-          <P gridArea="date" color={constStyle.COLORS.date} weight={constStyle.LIGHT_FONT}>{duration}</P>
+          <P gridArea="date" color={constStyle.COLORS.date} weight={constStyle.LIGHT_FONT} style={{overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis"}}>{duration}</P>
           {isUser && <YouTag gridArea="you" />}
           {!isEdit && <OtherButtons gridArea="otherBtn" isUser={isUser} handleEvent={handleEvent} />}
         </>

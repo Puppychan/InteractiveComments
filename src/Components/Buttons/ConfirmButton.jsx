@@ -6,6 +6,7 @@ const ConfirmButton = ({text, gridArea, form, disabled, onClick}) => {
     <SubmitButton
       color={BUTTONS.submit.colors}
       width={BUTTONS.submit.size.width}
+      style={{maxWidth: "13em"}}
       height={BUTTONS.submit.size.height}
       weight={BUTTONS.submit.weight}
       borderRadius={BUTTONS.submit.borderRadius}

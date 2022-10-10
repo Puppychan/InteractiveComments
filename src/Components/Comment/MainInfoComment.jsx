@@ -1,5 +1,5 @@
 // https://stackoverflow.com/questions/63409339/dont-write-a-character-in-a-textarea-after-a-onkeypress-check
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { CardContext, CommentsContext } from '../../Helpers/Contexts'
 import { setNewCommentsChange } from '../../Controllers/CommentController'
 
@@ -12,10 +12,8 @@ import ConfirmButton from '.././Buttons/ConfirmButton'
 
 const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => {
   const { comments, setComments, setCurrentClickReplies } = useContext(CommentsContext)
-  const { contentRef, isEdit, setTemplate, comment, setComment, setIsEdit } = useContext(CardContext)
+  const { contentRef, isEdit, setTemplate, comment, setIsEdit } = useContext(CardContext)
   const [disabled, setDisabled] = useState(true)
-
-  const buttonType = writeCommentType == "" ? "updateEdit" : "updateWrite"
 
   const findText = (textareaType) => {
     switch (writeCommentType) {
@@ -33,6 +31,10 @@ const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => 
 
     }
   }
+
+  useEffect(() => {
+    if (isEdit) setDisabled(false)
+  }, [isEdit])
 
   // when click confirm button after changing
   //..
@@ -59,12 +61,6 @@ const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => 
   }
   // check when user presses key onto Textarea
   const onInputText = (event) => {
-  //   if (contentRef.current.value == contentRef.current.defaultValue) {
-  //     setDisabled(true)
-  //   }
-  //   else {
-  //     setDisabled(false)
-  //   }
       // enter -> submit
       if (event.key == 'Enter' && !event.shiftKey) {
         // stop input "\n" character when enter for submitting input
@@ -100,7 +96,7 @@ const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => 
           <ConfirmButton 
             disabled={disabled} 
             text="update" gridArea="btn" form="form-card" 
-            onClick={submit} />
+            onClick={submit}/>
         </>
       )}
     </>
