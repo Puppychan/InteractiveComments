@@ -23,6 +23,7 @@ export const WidthCharacterSize = css`
     width: max(${({text, fontSize}) => (String(text).length * parseInt(fontSize.desktop))}em, ${props => props.maxWidth.desktop});
 `
 
+// Font
 export const Font = css`
     font-weight: ${ ({weight}) => weight || constStyle.LIGHT_FONT};
     color: ${props => props.color};

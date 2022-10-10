@@ -7,10 +7,9 @@ import { findIndexById, setNewCommentsChange } from "../Controllers/CommentContr
 import { CardContainer } from './Containers/CardContainer.style'
 import SideInfoComment from './Comment/SideInfoComment'
 import MainInfoComment from './Comment/MainInfoComment'
-import Avatar from './Avatar/Avatar'
 import Modal from './Modal/Modal'
 
-const Card = ({ id = null, type, replies = [], writeCommentType = "" }) => {
+const Card = ({ id = null, type, replies = [], writeCommentType = "", screen="desktop" }) => {
   // isUser for checking if this comment belongs to the user
   // context
   const { comments, setComments, currentUser, currentClickReplies, setCurrentClickReplies } = useContext(CommentsContext)
@@ -73,7 +72,7 @@ const Card = ({ id = null, type, replies = [], writeCommentType = "" }) => {
 
   return (
     <CardContext.Provider value={{ contentRef, isEdit, setTemplate, comment, setComment, setIsEdit }}>
-      <CardContainer type={type} template={template}>
+      <CardContainer type={type} template={template} screen={screen}>
         <SideInfoComment
           isUser={isUser}
           handleEvent={handleEvent} type={type} index={index} writeCommentType={writeCommentType} />

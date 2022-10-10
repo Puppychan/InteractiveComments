@@ -10,5 +10,5 @@ export const CommentContainer = styled.div`
     grid-area: ${props => props.gridArea};
     width: ${props => props.width}
 
-
+    //responsive screen
 `

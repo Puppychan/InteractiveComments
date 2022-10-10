@@ -7,11 +7,16 @@ import JsonData from "./Resources/data.json"
 import moment from "moment"
 import Comments from "./Components/Comments"
 
+import DesktopBreakpoint from "./Components/ResponsiveUtilities/DesktopBreakpoint"
+import TabletBreakpoint from "./Components/ResponsiveUtilities/TabletBreakpoint"
+import MobileBreakpoint from "./Components/ResponsiveUtilities/MobileBreakpoint"
+
 function App() {
 
   const [comments, setComments] = useState([])
   const [currentClickReplies, setCurrentClickReplies] = useState(new Set())
   const currentUser = JsonData.currentUser
+  const [dimension, setDimension] = useState("init")
 
   useEffect(() => {
     // first load when run
@@ -47,6 +52,11 @@ function App() {
       }
     
     });
+
+    // window.addEventListener('resize', handleWhenResize)
+    // return () => {
+    //   window.removeEventListener(handleWhenResize)
+    // }
     
   }, [])
 
@@ -56,9 +66,30 @@ function App() {
   }, [comments])
 
   return (
-    <CommentsContext.Provider value={{comments, setComments, currentUser, currentClickReplies, setCurrentClickReplies}}>
+    <CommentsContext.Provider value={{comments, setComments, currentUser, 
+        currentClickReplies, setCurrentClickReplies,
+        dimension, setDimension}}>
       <GlobalStyled />
-      <Comments />
+      <DesktopBreakpoint>
+        <>
+        <h1>{dimension}</h1>
+        <Comments screen="desktop" />  
+        </>
+      </DesktopBreakpoint>
+
+      <TabletBreakpoint>
+      <>
+        <h1>{dimension}</h1>
+        <Comments screen="tablet" />  
+        </>
+      </TabletBreakpoint>
+      
+      <MobileBreakpoint>
+      <>
+        <h1>{dimension}</h1>
+        <Comments screen="mobile" />  
+        </>
+      </MobileBreakpoint>
     </CommentsContext.Provider>
   )
 }

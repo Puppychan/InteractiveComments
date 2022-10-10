@@ -63,8 +63,6 @@ export const H5_FONT = "clamp(1.00rem, calc(0.95rem + 0.25vw), 1.25rem)";
 export const CORNER_RADIUS = "15px";
 export const SMALL_CORNER_RADIUS = "10px";
 
-export const GRID_PERCENT_REPLY_MAIN = "0.2fr"
-
 const BUTTON_GAP = '0.6em'
 export const MAIN_PAGE = {
     gap: "1.5em",
@@ -155,11 +153,8 @@ export const BUTTONS = {
 
 export const CARD = {
     // width of main and reply may be removed later
-    main: {
+    read: {
         sizes: {
-            width: {
-                desktop: "55%",
-            },
             gap: "0.4em",
             padding: {
                 desktop: "1.9em 1.1em"
@@ -168,9 +163,6 @@ export const CARD = {
     },
     reply: {
         sizes: {
-            width: {
-                desktop: "100%",
-            },
             gap: "0.5em",
             padding: {
                 desktop: "1.9em 1.2em"
@@ -184,7 +176,10 @@ export const CARD = {
             `"vote avatar name you date" auto
             "vote content content content content" auto
             ". . . . btn" auto /
-            auto auto auto 0.2fr 1fr`
+            auto auto auto 0.2fr 1fr`,
+            mobile:
+            `
+            `
         }
     },
     writeReply: {
@@ -203,7 +198,12 @@ export const CARD = {
             `"vote avatar name date . otherBtn" auto
             "vote content content content content content" auto
             ". content content content content content" auto /
-            ${GRID_PERCENT_REPLY_MAIN} auto auto auto auto 1fr`
+            0.2fr auto auto auto auto 1fr`,
+            mobile:
+            `"avatar name date ." auto
+            "content content content content" auto
+            "vote . . otherBtn" auto /
+            0.1fr auto auto 1fr`
         }
     },
     userComment: {
@@ -212,11 +212,17 @@ export const CARD = {
             `"vote avatar name you date otherBtn" auto
             "vote content content content content content" auto 
             ". content content content content content" auto /
-            ${GRID_PERCENT_REPLY_MAIN} auto auto auto auto 1fr`
+            0.2fr auto auto auto auto 1fr`,
+            mobile: 
+            `"avatar name you date ." auto
+            "content content content content content" auto
+            "vote . . . otherBtn" auto /
+            0.1fr auto auto 1fr`
         }
     },
     backgroundColor: COLORS.cardBck,
     borderRadius: CORNER_RADIUS,
+    width: "100%"
     
 }
 export const YOU_TAG = {
@@ -312,3 +318,15 @@ const ICON_URL = "../assets/icon-"
 //             return new URL(`${AVATAR_URL + name}.png`, import.meta.url).href 
 //     }
 // }
+export const getScreenPropsValue = (screen, variable) => {
+    try {
+        switch (screen) {
+            case "mobile":
+                return variable.mobile
+            default:
+                return variable.desktop
+        }
+    } catch (error) {
+        return variable
+    }
+}

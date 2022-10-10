@@ -11,6 +11,6 @@ export const RepliesContainer = styled.div`
     width: 100%;
     padding: 0 0 0 1.1em;
     height:  100%;
-    gap: ${CARD.main.sizes.gap};
+    gap: ${CARD.read.sizes.gap};
     position: relative;
 `
