@@ -142,10 +142,10 @@ export const BUTTONS = {
         weight: BOLD_FONT,
         size: {
             width: {
-                desktop: "50%"
+                desktop: "100%"
             },
             height: {
-                desktop: "4em"
+                desktop: "3em"
             }
         },
         borderRadius: SMALL_CORNER_RADIUS
@@ -156,10 +156,10 @@ export const BUTTONS = {
         weight: BOLD_FONT,
         size: {
             width: {
-                desktop: "50%"
+                desktop: "100%"
             },
             height: {
-                desktop: "4em"
+                desktop: "3em"
             }
         },
         borderRadius: SMALL_CORNER_RADIUS
@@ -226,7 +226,7 @@ export const CARD = {
             mobile:
             `"avatar name date date" auto
             "content content content content" auto
-            "vote vote . otherBtn" auto /
+            "vote vote otherBtn otherBtn" auto /
             0.1fr auto auto 1fr`
         }
     },
@@ -240,7 +240,7 @@ export const CARD = {
             mobile: 
             `"avatar name you date date" auto
             "content content content content content" auto
-            "vote vote . . otherBtn" auto /
+            "vote vote . otherBtn otherBtn" auto /
             0.1fr auto auto auto 1fr`
         }
     },
@@ -317,12 +317,17 @@ export const MODAL = {
     colors: COLORS.modal,
     size: {
         width: {
-            desktop: "40vw"
+            desktop: "34vw",
+            mobile: "calc(100vw - 2em)"
         },
-        height: {
-            desktop: "10vh"
+        padding: {
+            desktop: "2em 2em",
+            mobile: "2.5em 1.9em"
         },
-        padding: "4em 1em",
+        gap: {
+            desktop: "1.3em 1em",
+            mobile: "1.9em 1.2em"
+        }
     },
     header: "Delete comment",
     content: "Are you sure you want to delete this comment? This will remove the comment and can't be undone",

@@ -1,19 +1,21 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import {CommentsContext} from "../../Helpers/Contexts"
 
-import { H3, P } from '../../Style/GeneralStyled'
+import { H3, H5 } from '../../Style/GeneralStyled'
 import { SubmitButton } from '../Buttons/Buttons.style'
 import { ModalContainer } from '../Containers/ModalContainer.style'
 import { ModalBackground } from './ModalBackground.style'
 import { MODAL, REGULAR_FONT, BOLD_FONT } from '../../Style/ConstantStyled'
 const Modal = ({ modal=MODAL, closeModalEvent, confirmEvent }) => {
+    const {screensize} = useContext(CommentsContext)
     const primary = modal.btns.primary
     const secondary = modal.btns.secondary
     // if want to reuse later only need to change text to props
     return (
         <ModalBackground>
-            <ModalContainer modal={modal}>
-                <H3 weight={BOLD_FONT} gridArea="header">{modal.header}</H3>
-                <P gridArea="content">{modal.content}</P>
+            <ModalContainer modal={modal} screensize={screensize}>
+                <H3 weight={REGULAR_FONT} gridArea="header" color={modal.colors.header}>{modal.header}</H3>
+                <H5 gridArea="content" color={modal.colors.content}>{modal.content}</H5>
                 {secondary && (
                     <SubmitButton gridArea="secondBtn"
                     width={secondary.size.width} 

@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 import * as constStyle from "./ConstantStyled"
 export const FlexCenter = css`
     display: flex;
@@ -20,12 +20,12 @@ export const FlexCenterColumn = css`
     flex-direction: column;
 `
 export const WidthCharacterSize = css`
-    width: max(${({text, fontSize}) => (String(text).length * parseInt(fontSize.desktop))}em, ${props => props.maxWidth.desktop});
+    width: max(${({ text, fontSize }) => (String(text).length * parseInt(fontSize.desktop))}em, ${props => props.maxWidth.desktop});
 `
 
 // Font
 export const Font = css`
-    font-weight: ${ ({weight}) => weight || constStyle.LIGHT_FONT};
+    font-weight: ${({ weight }) => weight || constStyle.LIGHT_FONT};
     color: ${props => props.color};
     grid-area: ${props => props.gridArea};
 `
@@ -42,15 +42,15 @@ export const H5 = styled.h5`
     ${Font}
     font-size: 1rem;
     font-size: ${constStyle.H5_FONT};
-    `
-    export const P = styled.p`
+`
+export const P = styled.p`
         /* font-size: clamp(0.69rem, calc(0.67rem + 0.11vw), 0.80rem); */
         font-size: clamp(0.83rem, calc(0.80rem + 0.17vw), 1.00rem);
         ${Font}
         line-height: 1.3;
-    `
-    export const H6 = styled.h6`
+`
+export const H6 = styled.h6`
         font-size: clamp(0.69rem, calc(0.67rem + 0.11vw), 0.80rem);
         ${Font}
         line-height: 1.3;
-    `
+`
