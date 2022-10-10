@@ -12,7 +12,9 @@ export const VerticalDivider = styled.div`
 `
 export const VerticalDividerContainer = styled.div`
     ${FlexCenter}
-    /* position: absolute; */
-    ${WidthCharacterSize}
+    ${props => props.screensize == "desktop" && WidthCharacterSize}
+    ${props => props.screensize == "mobile" && `
+        width: 5%;
+    `}
     
 `

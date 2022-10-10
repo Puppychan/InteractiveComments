@@ -1,33 +1,29 @@
 //https://stackoverflow.com/questions/69228336/how-to-call-useeffect-when-browser-is-resized
+// https://medium.com/@techrally/react-responsive-its-pretty-cool-d61e5ed56d95
 import React, {useContext, useEffect} from 'react';
 import PropTypes from 'prop-types';
 
 import { CommentsContext } from '../../Helpers/Contexts';
 import MediaQuery from 'react-responsive';
 
-const breakpoints = {
-  desktop: '(min-width: 1025px)',
-  tablet: '(min-width: 768px) and (max-width: 1024px)',
-  mobile: '(max-width: 767px)',
-};
-
+import { BREAKPOINTS } from '../../Style/ConstantStyled';
 // destructive props type
 const { string, object } = PropTypes;
 
 export default function Breakpoint(props) {
-  const {setDimension} = useContext(CommentsContext)
-  const breakpoint = breakpoints[props.name] || breakpoints.desktop;
+  const {setScreenSize} = useContext(CommentsContext)
+  const breakpoint = BREAKPOINTS[props.name] || BREAKPOINTS.desktop;
   const handleWhenResize = () => {
     // props.name will print all names -> need condition
     if (window.matchMedia(breakpoint).matches) {
-      setDimension(props.name)
+      setScreenSize(props.name)
     }
     
   }
   useEffect(() => {
     window.addEventListener('resize', handleWhenResize)
     return () => {
-      window.removeEventListener(handleWhenResize)
+      window.removeEventListener('resize', handleWhenResize)
     }
     
   }, [])

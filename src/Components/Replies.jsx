@@ -7,8 +7,8 @@ import { RepliesContainer } from './Containers/RepliesContainer.style'
 import { ReplyCommentCard, WriteReplyCard } from './CardType'
 import { VOTE } from '../Style/ConstantStyled'
 
-const Replies = ({ comment, screen }) => {
-  const { currentClickReplies, setCurrentClickReplies } = useContext(CommentsContext)
+const Replies = ({ comment }) => {
+  const { currentClickReplies, screensize } = useContext(CommentsContext)
 
 
   const replyComponents = (comment) => {
@@ -23,15 +23,16 @@ const Replies = ({ comment, screen }) => {
     })
   }
   return (
-    <RepliesContainer screen={screen}>
+    <RepliesContainer screensize={screensize}>
       <VerticalDividerContainer
+              screensize={screensize}
               maxWidth={VOTE.sizes.width}
               fontSize={VOTE.sizes.font}
               text={comment.score}
                gridArea="divider">
         <VerticalDivider></VerticalDivider>
       </VerticalDividerContainer>
-      <CommentContainer screen={screen} type="reply" gridArea="content" width="100%">
+      <CommentContainer type="reply" gridArea="content" width="100%">
         {replyComponents(comment)}
       </CommentContainer>
 

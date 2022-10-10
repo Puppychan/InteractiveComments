@@ -66,8 +66,23 @@ export const SMALL_CORNER_RADIUS = "10px";
 const BUTTON_GAP = '0.6em'
 export const MAIN_PAGE = {
     gap: "1.5em",
-    padding: "10em 1em",
+    padding: {
+        desktop: "10em 1em",
+        mobile: "3em 1em"
+    },
+    cardWidth: {
+        desktop: "65%",
+        mobile: "100%"
+    }
 }
+
+export const BREAKPOINTS = {
+    // desktop: '(min-width: 1025px)',
+    desktop: '(min-width: 768px)',
+    // tablet: '(min-width: 768px) and (max-width: 1024px)',
+    mobile: '(max-width: 767px)',
+  };
+
 export const BUTTONS = {
     reply: {
         colors: COLORS.changeBtn,
@@ -155,17 +170,19 @@ export const CARD = {
     // width of main and reply may be removed later
     read: {
         sizes: {
-            gap: "0.4em",
+            gap: "0.6em",
             padding: {
-                desktop: "1.9em 1.1em"
+                desktop: "1.9em 1.2em",
+                mobile: "1.1em 1em"
             },
         }
     },
     reply: {
         sizes: {
-            gap: "0.5em",
+            gap: "0.6em",
             padding: {
-                desktop: "1.9em 1.2em"
+                desktop: "1.9em 1.2em",
+                mobile: "1.1em 1em"
             },
         }
     },
@@ -178,8 +195,10 @@ export const CARD = {
             ". . . . btn" auto /
             auto auto auto 0.2fr 1fr`,
             mobile:
-            `
-            `
+            `"avatar name you date date" auto
+            "content content content content content" auto
+            "vote vote . . btn" auto /
+            auto auto auto 0.2fr 1fr`
         }
     },
     writeReply: {
@@ -188,7 +207,12 @@ export const CARD = {
             `"avatar content btn" 1fr
             ". content ." 1fr /
             auto 1fr 0.25fr
-            `
+            `,
+            mobile:
+            `"content content content" 1fr
+            "avatar . btn" 1fr /
+            auto 1fr 0.75fr
+            `,
         }
     },
 
@@ -200,9 +224,9 @@ export const CARD = {
             ". content content content content content" auto /
             0.2fr auto auto auto auto 1fr`,
             mobile:
-            `"avatar name date ." auto
+            `"avatar name date date" auto
             "content content content content" auto
-            "vote . . otherBtn" auto /
+            "vote vote . otherBtn" auto /
             0.1fr auto auto 1fr`
         }
     },
@@ -214,10 +238,10 @@ export const CARD = {
             ". content content content content content" auto /
             0.2fr auto auto auto auto 1fr`,
             mobile: 
-            `"avatar name you date ." auto
+            `"avatar name you date date" auto
             "content content content content content" auto
-            "vote . . . otherBtn" auto /
-            0.1fr auto auto 1fr`
+            "vote vote . . otherBtn" auto /
+            0.1fr auto auto auto 1fr`
         }
     },
     backgroundColor: COLORS.cardBck,
@@ -247,7 +271,8 @@ export const VOTE = {
             desktop: "2.6em"
         },
         votingBtn: {
-            desktop: "1rem"
+            desktop: "1rem",
+            mobile: "0.7rem"
         },
         font: {
             desktop: "1.17em" // temporary
@@ -262,7 +287,8 @@ export const VOTE = {
 
 export const AVATAR = {
     sizes: {
-        desktop: "2.7em"
+        desktop: "2.2em",
+        mobile: "2em"
     },
     
 }
@@ -294,8 +320,9 @@ export const MODAL = {
             desktop: "40vw"
         },
         height: {
-            desktop: "30vh"
-        }
+            desktop: "10vh"
+        },
+        padding: "4em 1em",
     },
     header: "Delete comment",
     content: "Are you sure you want to delete this comment? This will remove the comment and can't be undone",

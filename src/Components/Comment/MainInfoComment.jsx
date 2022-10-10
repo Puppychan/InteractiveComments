@@ -83,7 +83,7 @@ const MainInfoComment = ({ type, index, defaultTemplate, writeCommentType }) => 
   return (
     <>
       {!(isEdit || writeCommentType != "") ? (
-        <P gridArea="content" color={constStyle.COLORS.content}>
+        <P gridArea="content" color={constStyle.COLORS.content} style={{alignSelf: "flex-start"}}>
           {type == "reply" && <ReplyTag replyTo={comment.replyingTo} />}
           {comment.content}
         </P>

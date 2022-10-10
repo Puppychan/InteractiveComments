@@ -4,7 +4,7 @@ import { H3, P } from '../../Style/GeneralStyled'
 import { SubmitButton } from '../Buttons/Buttons.style'
 import { ModalContainer } from '../Containers/ModalContainer.style'
 import { ModalBackground } from './ModalBackground.style'
-import { MODAL } from '../../Style/ConstantStyled'
+import { MODAL, REGULAR_FONT, BOLD_FONT } from '../../Style/ConstantStyled'
 const Modal = ({ modal=MODAL, closeModalEvent, confirmEvent }) => {
     const primary = modal.btns.primary
     const secondary = modal.btns.secondary
@@ -12,7 +12,7 @@ const Modal = ({ modal=MODAL, closeModalEvent, confirmEvent }) => {
     return (
         <ModalBackground>
             <ModalContainer modal={modal}>
-                <H3 gridArea="header">{modal.header}</H3>
+                <H3 weight={BOLD_FONT} gridArea="header">{modal.header}</H3>
                 <P gridArea="content">{modal.content}</P>
                 {secondary && (
                     <SubmitButton gridArea="secondBtn"

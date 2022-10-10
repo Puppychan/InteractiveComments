@@ -14,7 +14,7 @@ import { ReactComponent as PlusIcon } from "../../assets/icon-plus.svg"
 
 const Vote = ({ comment, gridArea, index, type }) => {
   // context
-  const { comments, setComments } = useContext(CommentsContext)
+  const { comments, setComments, screensize } = useContext(CommentsContext)
   const [isVote, setIsVote] = useState(!comment.hasVoted ? "none" : comment.hasVoted)
 
   // attribute styling
@@ -66,7 +66,8 @@ const Vote = ({ comment, gridArea, index, type }) => {
       padding={VOTE.padding}
       gap={VOTE.gap}
       colorScore={colors.score}
-      bckColor={colors.bck}>
+      bckColor={colors.bck}
+      screensize={screensize}>
       <VoteButton colors={colors} isChosen={isVote == "increase"} size={buttonSize} onClick={increase} icon={<PlusIcon />} />
       <H5>{comment.score}</H5>
 

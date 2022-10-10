@@ -6,9 +6,9 @@ import { CARD, getScreenPropsValue } from "../../Style/ConstantStyled";
 const getResponsive = (props, typeValue) => {
     switch (typeValue) {
         case "template":
-            return getScreenPropsValue(props.screen, CARD[props.template].gridTemplate)
+            return getScreenPropsValue(props.screensize, CARD[props.template].gridTemplate)
         case "padding":
-            return getScreenPropsValue(props.screen, CARD[props.type].sizes.padding)
+            return getScreenPropsValue(props.screensize, CARD[props.type].sizes.padding)
     }
 }
 export const CardContainer = styled.div`
@@ -19,6 +19,7 @@ export const CardContainer = styled.div`
     border-radius: ${CARD.borderRadius};
     width: ${CARD.width};
     
+    
     gap: ${props => CARD[props.type].sizes.gap};
     
     padding: ${props => getResponsive(props, "padding")};
@@ -26,5 +27,7 @@ export const CardContainer = styled.div`
     ${props => (props.template == "writeReply" || props.template == "writeComment") && `
         align-items: flex-start;
     `}
+
+    min-height: ${props => props.screensize == "desktop" ? "1em" : "12em"}
     
 `

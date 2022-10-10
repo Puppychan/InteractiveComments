@@ -5,7 +5,9 @@ import GlobalStyled from './Style/GlobalStyled'
 import {CommentsContext} from "./Helpers/Contexts"
 import JsonData from "./Resources/data.json"
 import moment from "moment"
+
 import Comments from "./Components/Comments"
+import { BREAKPOINTS } from './Style/ConstantStyled'
 
 import DesktopBreakpoint from "./Components/ResponsiveUtilities/DesktopBreakpoint"
 import TabletBreakpoint from "./Components/ResponsiveUtilities/TabletBreakpoint"
@@ -16,11 +18,19 @@ function App() {
   const [comments, setComments] = useState([])
   const [currentClickReplies, setCurrentClickReplies] = useState(new Set())
   const currentUser = JsonData.currentUser
-  const [dimension, setDimension] = useState("init")
+  const [screensize, setScreenSize] = useState("init")
 
   useEffect(() => {
     // first load when run
-  
+    // set breakpoints
+    if (screensize == 'init') {
+      for (const breakpointName in BREAKPOINTS) {
+        if (window.matchMedia(BREAKPOINTS[breakpointName]).matches) {
+          setScreenSize(breakpointName)
+          break
+        }
+      }
+    }
 
     // load from local storage
     const localStoreItems = localStorage.getItem('comments')
@@ -52,11 +62,6 @@ function App() {
       }
     
     });
-
-    // window.addEventListener('resize', handleWhenResize)
-    // return () => {
-    //   window.removeEventListener(handleWhenResize)
-    // }
     
   }, [])
 
@@ -68,27 +73,18 @@ function App() {
   return (
     <CommentsContext.Provider value={{comments, setComments, currentUser, 
         currentClickReplies, setCurrentClickReplies,
-        dimension, setDimension}}>
-      <GlobalStyled />
+        screensize, setScreenSize}}>
+      <GlobalStyled screensize={screensize} />
       <DesktopBreakpoint>
-        <>
-        <h1>{dimension}</h1>
-        <Comments screen="desktop" />  
-        </>
+        <Comments />  
       </DesktopBreakpoint>
 
-      <TabletBreakpoint>
-      <>
-        <h1>{dimension}</h1>
-        <Comments screen="tablet" />  
-        </>
-      </TabletBreakpoint>
+      {/* <TabletBreakpoint>
+        <Comments />  
+      </TabletBreakpoint> */}
       
       <MobileBreakpoint>
-      <>
-        <h1>{dimension}</h1>
-        <Comments screen="mobile" />  
-        </>
+        <Comments/>  
       </MobileBreakpoint>
     </CommentsContext.Provider>
   )

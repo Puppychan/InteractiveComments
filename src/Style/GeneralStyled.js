@@ -32,7 +32,7 @@ export const Font = css`
 export const H3 = styled.h3`
     ${Font}
     font-size: 1rem;
-    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
+    font-size: clamp(1.44rem, calc(1.34rem + 0.51vw), 1.95rem);
 `
 export const H4 = styled.h4`
     ${Font}

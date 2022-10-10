@@ -9,10 +9,10 @@ import SideInfoComment from './Comment/SideInfoComment'
 import MainInfoComment from './Comment/MainInfoComment'
 import Modal from './Modal/Modal'
 
-const Card = ({ id = null, type, replies = [], writeCommentType = "", screen="desktop" }) => {
+const Card = ({ id = null, type, replies = [], writeCommentType = "" }) => {
   // isUser for checking if this comment belongs to the user
   // context
-  const { comments, setComments, currentUser, currentClickReplies, setCurrentClickReplies } = useContext(CommentsContext)
+  const { comments, setComments, currentUser, currentClickReplies, setCurrentClickReplies, screensize } = useContext(CommentsContext)
   const [isEdit, setIsEdit] = useState(false)
 
   const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false)
@@ -72,7 +72,7 @@ const Card = ({ id = null, type, replies = [], writeCommentType = "", screen="de
 
   return (
     <CardContext.Provider value={{ contentRef, isEdit, setTemplate, comment, setComment, setIsEdit }}>
-      <CardContainer type={type} template={template} screen={screen}>
+      <CardContainer type={type} template={template} screensize={screensize}>
         <SideInfoComment
           isUser={isUser}
           handleEvent={handleEvent} type={type} index={index} writeCommentType={writeCommentType} />
