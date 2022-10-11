@@ -17,7 +17,7 @@ export const CardContainer = styled.div`
     align-items: center;
     background-color: ${CARD.backgroundColor};
     border-radius: ${CARD.borderRadius};
-    width: ${props => props.width || CARD.width};
+    width: ${CARD.width};
     
     
     gap: ${props => CARD[props.type].sizes.gap};
@@ -28,6 +28,7 @@ export const CardContainer = styled.div`
         align-items: flex-start;
     `}
 
-    min-height: ${props => props.screensize == "desktop" ? "0" : "12em"}
+    min-height: ${props =>( props.screensize == "desktop" && !(props.template == "writeReply" || props.template == "writeComment")) && "0"};
+    min-height: ${props =>( props.screensize == "mobile" && !(props.template == "writeReply" || props.template == "writeComment")) && "12em"};
     
 `

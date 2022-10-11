@@ -210,7 +210,7 @@ export const CARD = {
             `,
             mobile:
             `"content content content" 1fr
-            "avatar . btn" 1fr /
+            "avatar . btn" auto /
             auto 1fr 0.75fr
             `,
         }
@@ -221,7 +221,7 @@ export const CARD = {
             desktop: 
             `"vote avatar name date . otherBtn" auto
             "vote content content content content content" auto
-            ". content content content content content" auto /
+            ". content content content content content" minmax(0, auto) /
             0.2fr auto auto auto auto 1fr`,
             mobile:
             `"avatar name date date" auto
@@ -235,7 +235,7 @@ export const CARD = {
             desktop: 
             `"vote avatar name you date otherBtn" auto
             "vote content content content content content" auto 
-            ". content content content content content" auto /
+            ". content content content content content" minmax(0, auto) /
             0.2fr auto auto auto auto 1fr`,
             mobile: 
             `"avatar name you date date" auto
