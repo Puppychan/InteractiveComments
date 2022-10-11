@@ -7,9 +7,9 @@ import { ReadCommentCard, WriteReplyCommentCard, WriteCommentCard } from './Card
 import { CommentContainer } from './Containers/CommentContainer.style'
 
 const Comments = () => {
-  const {comments, currentClickReplies, setCurrentClickReplies} = useContext(CommentsContext)
+  const {comments, currentClickReplies, screensize} = useContext(CommentsContext)
   return (
-    <CommentContainer>
+    <CommentContainer screensize={screensize}>
       {comments.map((comment) => {
         const isRepliesNotEmpty = checkRepliesNotEmpty(comment)
         return (

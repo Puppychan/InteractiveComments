@@ -8,7 +8,12 @@ export const CommentContainer = styled.div`
     gap: ${MAIN_PAGE.gap};
     align-items: ${props => props.type == "reply" && "flex-end"};
     grid-area: ${props => props.gridArea};
-    width: ${props => props.width}
-
-    //responsive screen
+    width: ${props => props.width};
+    display: grid;
+    
+    @media not all and (min-resolution:.001dpcm) {
+        /* Safari only override */
+        gap: ${props => props.screensize == "desktop" ? "5em" : "3em"};
+        
+    }
 `

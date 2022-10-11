@@ -16,3 +16,10 @@ https://stackoverflow.com/questions/54033765/how-to-give-image-src-dynamically-i
  <img src={/folderInPublic/file}/>
  
  npm i styled-components // install library itself to deploy
+
+     
+    @media not all and (min-resolution:.001dpcm) {
+        /* Safari only override */
+        gap: ${props => props.screensize == "desktop" ? "5em" : "3em"};
+        
+    }

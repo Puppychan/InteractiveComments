@@ -5,9 +5,9 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
 ## Table of contents
 
 - [Overview](#overview)
+  - [Links](#links)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
-  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -17,6 +17,11 @@ This is a solution to the [Interactive comments section challenge on Frontend Me
 - [Acknowledgments](#acknowledgments)
 
 ## Overview
+
+### Links
+
+- Solution URL: [Github Link](https://github.com/Puppychan/InteractiveComments)
+- Live Site URL: [Demo Link](https://matsuri-interactive-comments.netlify.app/)
 
 ### The challenge
 
@@ -94,10 +99,7 @@ Users should be able to:
   </tr>
 </table>
 
-### Links
 
-- Solution URL: [Github Link](https://github.com/Puppychan/InteractiveComments)
-- Live Site URL: [Demo Link](https://matsuri-interactive-comments.netlify.app/)
 
 ## My process
 
@@ -116,7 +118,7 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Because this is my first complete project written by React, one of the most important thing I learned is how to write code in React, manage components as folder (including content and css among content -> css -> animation -> testing)
 
 To see how you can add code snippets, see below:
 

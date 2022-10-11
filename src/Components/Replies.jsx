@@ -33,7 +33,7 @@ const Replies = ({ comment }) => {
         <VerticalDivider></VerticalDivider>
       </VerticalDividerContainer>
 
-      <CommentContainer type="reply" gridArea="content" width="auto">
+      <CommentContainer type="reply" gridArea="content" width="auto" screensize={screensize}>
         {replyComponents(comment)}
       </CommentContainer>
 

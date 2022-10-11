@@ -2,16 +2,19 @@ import styled, { css } from "styled-components";
 import * as constStyle from "./ConstantStyled"
 export const FlexCenter = css`
     display: flex;
+    display: -webkit-flex;
     justify-content: center;
     align-items: center;
 `
 export const FlexBtw = css`
+    display: -webkit-flex;
     display: flex;
     justify-content: space-between;
     align-items: center;
 `
 export const FlexLeft = css`
     display: flex;
+    display: -webkit-flex;
     justify-content: flex-start;
     align-items: center;
 `
