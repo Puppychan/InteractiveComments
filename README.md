@@ -31,15 +31,15 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-<table>
+
+<table border="0">
   <tr>
-      <td><b style="font-size:30px">Title</b></td>
-      <td><b style="font-size:30px">Title2</b></td>
+      <td><img width="1512" alt="image" src="https://user-images.githubusercontent.com/32950625/194996475-a0c21722-0029-422d-94c9-8992240ecbae.png"></td>
+      <td><img width="243" alt="image" src="https://user-images.githubusercontent.com/32950625/194996657-2670bc30-fa37-4c59-99b9-a4abb3305a44.png"></td>
   </tr>
   <tr>
-    <td>Lorem ipsum ...</td>
-    <td>Lorem ipsum ...</td>
+    <td>Desktop View</td>
+    <td>Mobile View</td>
   </tr>
 </table>
 
