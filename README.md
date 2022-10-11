@@ -1,6 +1,6 @@
 # Frontend Mentor - Interactive comments section solution
 
-This is a solution to the [Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Interactive comments section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -31,65 +31,64 @@ Users should be able to:
 
 ### Screenshot
 
-
 <table >
   <tr>
       <td><p>
-        <img width="1512" alt="image" src="https://user-images.githubusercontent.com/32950625/194996475-a0c21722-0029-422d-94c9-8992240ecbae.png">
+        <img width="1512" alt="image" src="https://user-images.githubusercontent.com/32950625/195004300-16c0843c-464d-4814-a566-21dfbd9acf96.png">
         <em>Desktop View</em>
       </p></td>
       <td><p>
-        <img width="243" alt="image" src="https://user-images.githubusercontent.com/32950625/194996657-2670bc30-fa37-4c59-99b9-a4abb3305a44.png">
+        <img width="324" alt="image" src="https://user-images.githubusercontent.com/32950625/195004725-caf740c8-670f-46cc-8451-f65bfa55ddd1.png">
         <em>Mobile View</em>
       </p></td>
   </tr>
   <tr>
     <td><p>
-      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <img width="776" alt="image" src="https://user-images.githubusercontent.com/32950625/195004410-f3e98755-037b-40c9-b17e-9457942d25e6.png">
       <em>Desktop View Reply A Comment</em>
     </p></td>
       <td><p>
-    
-    <em>Mobile View Reply A Comment</em>
+        <img width="322" alt="image" src="https://user-images.githubusercontent.com/32950625/195004789-89ecd9b2-c9a2-4490-92bd-d4d1a9094c88.png">    
+        <em>Mobile View Reply A Comment</em>
   </p></td>
   </tr>
     <tr>
     <td><p>
-      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <img width="829" alt="image" src="https://user-images.githubusercontent.com/32950625/195004456-05ec7b20-2508-4e4b-9e27-d31c5b9fd1f7.png">
       <em>Desktop View Reply A Reply</em>
     </p></td>
       <td><p>
-    <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+    <img width="321" alt="image" src="https://user-images.githubusercontent.com/32950625/195004878-1d8daa28-289c-4a32-b430-1afecacd1f07.png">
     <em>Mobile View Reply A Reply</em>
   </p></td>
   </tr>
     <tr>
     <td><p>
-      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <img width="739" alt="image" src="https://user-images.githubusercontent.com/32950625/195004499-0373cd07-8e10-4d59-b586-9bb62330c187.png">
       <em>Desktop View Edit A Comment</em>
     </p></td>
       <td><p>
-    <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+    <img width="321" alt="image" src="https://user-images.githubusercontent.com/32950625/195004916-161811a2-d37b-4f98-97af-e5d13b408623.png">
     <em>Mobile View Edit A Comment</em>
   </p></td>
   </tr>
     <tr>
     <td><p>
-      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <img width="867" alt="image" src="https://user-images.githubusercontent.com/32950625/195004541-39539401-a52f-4b96-b698-1252dc183c13.png">
       <em>Desktop View Create New Comment</em>
     </p></td>
       <td><p>
-    <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+    <img width="322" alt="image" src="https://user-images.githubusercontent.com/32950625/195004947-f385a649-7a44-49c9-8f94-907ea85d153a.png">
     <em>Mobile View Create New Comment</em>
   </p></td>
   </tr>
     <tr>
     <td><p>
-      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <img width="1506" alt="image" src="https://user-images.githubusercontent.com/32950625/195004586-c524d31d-415b-4f4c-a5aa-12d42f8339da.png">
       <em>Desktop View Delete Confirm Modal</em>
     </p></td>
       <td><p>
-    <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+    <img width="324" alt="image" src="https://user-images.githubusercontent.com/32950625/195004985-885b7bc1-da78-4c98-b201-20db7642b309.png">
     <em>Mobile View Delete Confirm Modal</em>
   </p></td>
   </tr>
@@ -109,7 +108,7 @@ Users should be able to:
 - Flexbox
 - CSS Grid
 - [React](https://reactjs.org/) - JS library
-- [React Responsive](https://medium.com/@techrally/react-responsive-its-pretty-cool-d61e5ed56d95) -  Mobile-first workflow - Responsive Design
+- [React Responsive](https://medium.com/@techrally/react-responsive-its-pretty-cool-d61e5ed56d95) - Mobile-first workflow - Responsive Design
 - [Styled Components](https://styled-components.com/) - For styling
 - [Vite Template](https://vitejs.dev/guide/) and Vite Plugin Svgr for displaying svg as react components
 - [React UUID](https://www.npmjs.com/package/react-uuid) - Generate ID when creating new object
@@ -124,15 +123,17 @@ To see how you can add code snippets, see below:
 ```html
 <h1>Some HTML code I'm proud of</h1>
 ```
+
 ```css
 .proud-of-this-css {
   color: papayawhip;
 }
 ```
+
 ```js
 const proudOfThisFunc = () => {
-  console.log('🎉')
-}
+  console.log("🎉");
+};
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
@@ -143,12 +144,10 @@ If you want more help with writing markdown, we'd recommend checking out [The Ma
 
 Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
-
 ### Useful resources
 
 - [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
 
 ## Author
 
