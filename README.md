@@ -44,7 +44,54 @@ Users should be able to:
       </p></td>
   </tr>
   <tr>
-    <td></td>
+    <td><p>
+      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <em>Desktop View Reply A Comment</em>
+    </p></td>
+      <td><p>
+    
+    <em>Mobile View Reply A Comment</em>
+  </p></td>
+  </tr>
+    <tr>
+    <td><p>
+      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <em>Desktop View Reply A Reply</em>
+    </p></td>
+      <td><p>
+    <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+    <em>Mobile View Reply A Reply</em>
+  </p></td>
+  </tr>
+    <tr>
+    <td><p>
+      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <em>Desktop View Edit A Comment</em>
+    </p></td>
+      <td><p>
+    <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+    <em>Mobile View Edit A Comment</em>
+  </p></td>
+  </tr>
+    <tr>
+    <td><p>
+      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <em>Desktop View Create New Comment</em>
+    </p></td>
+      <td><p>
+    <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+    <em>Mobile View Create New Comment</em>
+  </p></td>
+  </tr>
+    <tr>
+    <td><p>
+      <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+      <em>Desktop View Delete Confirm Modal</em>
+    </p></td>
+      <td><p>
+    <img width="846" alt="image" src="https://user-images.githubusercontent.com/32950625/194999937-05957040-c226-4204-8461-e06c13040f83.png">
+    <em>Mobile View Delete Confirm Modal</em>
+  </p></td>
   </tr>
 </table>
 
