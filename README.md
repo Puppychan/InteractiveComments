@@ -32,14 +32,19 @@ Users should be able to:
 ### Screenshot
 
 
-<table border="0">
+<table >
   <tr>
-      <td><img width="1512" alt="image" src="https://user-images.githubusercontent.com/32950625/194996475-a0c21722-0029-422d-94c9-8992240ecbae.png"></td>
-      <td><img width="243" alt="image" src="https://user-images.githubusercontent.com/32950625/194996657-2670bc30-fa37-4c59-99b9-a4abb3305a44.png"></td>
+      <td><p>
+        <img width="1512" alt="image" src="https://user-images.githubusercontent.com/32950625/194996475-a0c21722-0029-422d-94c9-8992240ecbae.png">
+        <em>Desktop View</em>
+      </p></td>
+      <td><p>
+        <img width="243" alt="image" src="https://user-images.githubusercontent.com/32950625/194996657-2670bc30-fa37-4c59-99b9-a4abb3305a44.png">
+        <em>Mobile View</em>
+      </p></td>
   </tr>
   <tr>
-    <td>Desktop View</td>
-    <td>Mobile View</td>
+    <td></td>
   </tr>
 </table>
 
