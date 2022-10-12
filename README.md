@@ -117,31 +117,76 @@ Users should be able to:
 - [Moment](https://momentjs.com/) - Add timestamps as the published time to the comment card
 
 ### What I learned
-
-Because this is my first complete project written by React, one of the most important thing I learned is how to write code in React, manage components as folder (including content and css among content -> css -> animation -> testing)
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-
+#### Local Storage
+- Create useState to store and assign items from local storage
+- Add getter inside useEffect inside App.jsx
+  - Call <b style="color: Coral">localStorage.getItems('<i>itemName</i>')</b> -> <b style="color: Coral">JSON.parse()</b> to convert string stored inside local storage to JSON object
+  - Must check <span style='color: orange'>null</span> condition when calling getter
+  - If null - nothing stored inside local storage, call local storage's setter to set default value
+  - Finally, call useState's setter to set the value called from local storage to the system's variable
+- If the system's variable has any change -> useEffect to set new change to local storage
 ```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
+  // inside App.jsx
+
+import { useState, useEffect } from 'react'
+import Comments from "./Components/Comments"
+//...
+
+function App() {
+  // init system's variable
+  const [comments, setComments] = useState([])
+  //...
+
+  useEffect(() => {
+    // first load when run
+    //...
+
+    // load from local storage
+    const localStoreItems = localStorage.getItem('comments')
+    // Check if exist or null
+    // if not null (.length because item get from local storage now is string)
+    // if null, string: "[]"
+    if (localStoreItems && localStoreItems.length != 2) {
+      const items = JSON.parse(localStoreItems)
+      // set system's variable
+      setComments(items)
+    }
+    // if null
+    else {
+      // set back to local storage
+      localStorage.setItem('comments', JSON.stringify(JsonData.comments))
+      // alsp set system's variable
+      setComments(JsonData.comments)
+    }
+
+    //...
+    
+  }, [])
+
+  useEffect(() => {
+    // update storage when update comments
+    localStorage.setItem('comments', JSON.stringify(comments))
+  }, [comments])
+
+  return (
+    //...
+  )
+}
+
+export default App
+
 ```
+- Besides, if first useEffect is loading twice (one for having data array, one for null array) -> remove <b style="color: MediumTurquoise"><React.StrictMode></React.StrictMode></b> inside main.jsx
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+#### Dynamic Timestamps
+#### Dynamic Svg as React Component
+#### Dynamic Path for Img Tag
+#### Add style for only Safari version
+#### Deploy Netlify
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
+### Getting Started
+#### Prerequisites
+#### Installation
 ### Continued development
 
 Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
@@ -160,3 +205,5 @@ Use this section to outline areas that you want to continue focusing on in futur
 ## Acknowledgments
 
 This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
+  //https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar
+// https://stackoverflow.com/questions/11448340/how-to-get-duration-in-weeks-with-moment-js
