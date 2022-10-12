@@ -117,14 +117,15 @@ Users should be able to:
 - [Moment](https://momentjs.com/) - Add timestamps as the published time to the comment card
 
 ### What I learned
-#### Local Storage
+#### :octocat: Local Storage
+- This is for storing the changes inside that web even when the user closes the web
 - Create useState to store and assign items from local storage
 - Add getter inside useEffect inside App.jsx
   - Call <b style="color: Coral">localStorage.getItems('<i>itemName</i>')</b> -> <b style="color: Coral">JSON.parse()</b> to convert string stored inside local storage to JSON object
   - Must check <span style='color: orange'>null</span> condition when calling getter
-  - If null - nothing stored inside local storage, call local storage's setter to set default value
-  - Finally, call useState's setter to set the value called from local storage to the system's variable
-- If the system's variable has any change -> useEffect to set new change to local storage
+  - If <span style='color: orange'>null</span> - <i>nothing stored inside local storage</i>, call <span style="color: DarkTurquoise">local storage's setter</span> to set default value
+  - Finally, call <span style='color: Pink'>useState's setter</span> to set the value called from local storage to the system's variable
+- If the system's variable has any change -> useEffect to <span style="color: DarkTurquoise">set new change</span> to local storage
 ```js
   // inside App.jsx
 
@@ -176,25 +177,62 @@ function App() {
 export default App
 
 ```
-- Besides, if first useEffect is loading twice (one for having data array, one for null array) -> remove <b style="color: MediumTurquoise"><React.StrictMode></React.StrictMode></b> inside main.jsx
+- Besides, if first useEffect is loading twice (one for having data array, one for null array) -> remove <b style="color: MediumTurquoise"><React.StrictMode></React.StrictMode></b> inside main.jsx.
 
 #### Dynamic Timestamps
+- Install and import the package
+  ```console
+  npm install moment --save
+  ```
+  Inside Moment-using files
+  ```js
+  import moment from "moment"
+  ```
+- Add formatted timestamps: <span style="color: Orange">moment().format()</span> - String => output:  <em style="color: Salmon">2022-10-12T23:46:32+07:00</em>
+- Display relative time
+  - Create useState variable
+  - Set default value is relative time: <span style="color: Orange">moment(<i style="color: DarkSeaGreen">timestamps</i>).fromNow()</span>
+  - Update continuously:
+
 #### Dynamic Svg as React Component
 #### Dynamic Path for Img Tag
+#### React Responsive
+#### UUID Generator
 #### Add style for only Safari version
 #### Deploy Netlify
 
 ### Getting Started
 #### Prerequisites
+- Install NodeJs first inside Node's website
+- Npm package
+  ```console
+  npm install npm@latest -g
+  ```
+
 #### Installation
+- Install following packages
+```console
+npm install moment --save
+npm i react-uuid
+
+npm install -g netlify-cli
+npm update netlify-cli
+
+npm install --save styled-components
+npm i styled-components
+
+npm i vite-plugin-svgr
+
+npm install react-responsive --save
+```
 ### Continued development
 
 Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Local Storage Tutorial](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/) - Amazing article for showing how to use local storage
+- [Timestamp Resources - Moment JS](https://momentjs.com/) - This is helpful for formatting time and updating relative time continuosly
 
 ## Author
 
