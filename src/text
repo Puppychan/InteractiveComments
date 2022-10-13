@@ -7,7 +7,7 @@
  deploy
  npm install -g netlify-cli
  npm update netlify-cli
- npm run build (if cannot run -> npm init first)
+ ≈ (if cannot run -> npm init first)
  ntl init
  ntl deploy --prod
 

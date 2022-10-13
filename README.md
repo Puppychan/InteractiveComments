@@ -117,15 +117,15 @@ Users should be able to:
 - [Moment](https://momentjs.com/) - Add timestamps as the published time to the comment card
 
 ### What I learned
-#### :octocat: Local Storage
+#### :diamonds: Local Storage
 - This is for storing the changes inside that web even when the user closes the web
 - Create useState to store and assign items from local storage
 - Add getter inside useEffect inside App.jsx
-  - Call <b style="color: Coral">localStorage.getItems('<i>itemName</i>')</b> -> <b style="color: Coral">JSON.parse()</b> to convert string stored inside local storage to JSON object
-  - Must check <span style='color: orange'>null</span> condition when calling getter
-  - If <span style='color: orange'>null</span> - <i>nothing stored inside local storage</i>, call <span style="color: DarkTurquoise">local storage's setter</span> to set default value
-  - Finally, call <span style='color: Pink'>useState's setter</span> to set the value called from local storage to the system's variable
-- If the system's variable has any change -> useEffect to <span style="color: DarkTurquoise">set new change</span> to local storage
+  - Call **<b style="color: Coral">localStorage.getItems('_<i style="color: SkyBlue">itemName</i>_')</b>** -> ***<b style="color: Coral">JSON.parse()</b>*** to convert string stored inside local storage to JSON object
+  - Must check `null` condition when calling getter
+  - If `null` - *nothing stored inside local storage*, call `local storage's setter` to set default value
+  - Finally, call `useState's setter` to set the value called from local storage to the system's variable
+- If the system's variable has any change -> useEffect to `set new change` to local storage
 ```js
   // inside App.jsx
 
@@ -177,9 +177,9 @@ function App() {
 export default App
 
 ```
-- Besides, if first useEffect is loading twice (one for having data array, one for null array) -> remove <b style="color: MediumTurquoise"><React.StrictMode></React.StrictMode></b> inside main.jsx.
+- Besides, if first useEffect is loading twice (one for having data array, one for null array) -> remove `<React.StrictMode></React.StrictMode>` inside main.jsx.
 
-#### Dynamic Timestamps
+#### :diamonds:	 Dynamic Timestamps
 - Install and import the package
   ```console
   npm install moment --save
@@ -188,18 +188,140 @@ export default App
   ```js
   import moment from "moment"
   ```
-- Add formatted timestamps: <span style="color: Orange">moment().format()</span> - String => output:  <em style="color: Salmon">2022-10-12T23:46:32+07:00</em>
+- Add formatted timestamps: **<span style="color: Orange">moment().format()</span>** - String => output:  <em style="color: Salmon">2022-10-12T23:46:32+07:00</em>
 - Display relative time
   - Create useState variable
-  - Set default value is relative time: <span style="color: Orange">moment(<i style="color: DarkSeaGreen">timestamps</i>).fromNow()</span>
+  - Set default value is relative time: **<span style="color: Orange">moment(_<i style="color: DarkSeaGreen">timestamps</i>_).fromNow()</span>**
   - Update continuously:
+    - use setInterval inside useEffect, after 1min (60000) -> update relative duration once
+    ```js
+    // const inside object
+    const timestamps = moment.format()
+    // inside component file jsx
+    const [duration, setDuration] = useState(moment(timestamps).fromNow())
+    //...
+    useEffect(() => {
+      setInterval(() => {
+        setDuration(moment(timestamps).fromNow())
+      }, 60000);
+    }, [])
+    ```
 
-#### Dynamic Svg as React Component
-#### Dynamic Path for Img Tag
-#### React Responsive
-#### UUID Generator
-#### Add style for only Safari version
-#### Deploy Netlify
+#### :diamonds: Dynamic Svg as React Component
+- This function can help the coder to style the SVG dynamically and conditionally without importing new image
+- Because this project uses Vite -> install
+  ```console
+  npm i vite-plugin-svgr
+  ```
+- Inside vite.config.js, add plugins[..., svgr()]
+  ```js
+  import { defineConfig } from 'vite'
+  import react from '@vitejs/plugin-react'
+  import svgr from 'vite-plugin-svgr'; // this line
+
+  // https://vitejs.dev/config/
+  export default defineConfig({
+    plugins: [ react(), svgr()] // this line
+  })
+  ```
+- To use: `import {ReactComponent as SvgName} from "./assets/svg/logo.svg`
+- To style the svg:
+  - First method: **<span style="color: pink">using _as_ props from styled component</span>**
+    ```js
+    import styled from "styled-components";
+    export const Icon = styled.svg`
+        width: 10em;
+        height: 10em;
+
+        &:hover {
+            & path {
+                fill: pink;
+            }
+        }
+    `
+    // inside main.jsx
+    import {ReactComponent as MinusIcon} from "./assets/minus.svg"
+    //...
+      <Icon as={MinusIcon}>
+    //...
+    ```
+  -----
+  - Second method
+    ```js
+    import styled from "styled-components";
+
+    const SvgContainer = styled.div`
+      svg {
+        width: 10em;
+        height: 10em;
+        fill: blue;
+        & path {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+      }
+    `
+
+    export default SvgContainer
+
+    // Inside main.jsx
+    import {ReactComponent as MinusIcon} from "./assets/minus.svg"
+    //...
+      <SvgContainer>
+        <MinusIcon />
+      </SvgContainer>
+    //...
+    ```
+#### :diamonds: Dynamic Path for Img Tag
+- When have too much images to import, and there is no need for styling these images dynamically
+- Move all images inside folder assets to ***public folder***
+  ```bash
+  .
+  |--main
+  |   |-- public
+  |   |   |-- svg
+  |   |   |   |-- svgFile.svg
+  ```
+  The path would be: `/svg/svgFile.svg`
+- The tag: `<img src='/svg/${svgNameDynamic}.svg'/>`
+
+#### :diamonds: React Responsive
+- For responsive faster
+- Install
+  ```console
+  npm install react-responsive --save
+  ```
+- Create Breakpoint file
+- Not really learn all
+
+#### :diamonds: UUID Generator
+- Install
+  ```console
+  npm i react-uuid
+  ```
+- uuid()
+
+#### :diamonds: Add style for only Safari version
+- Inside css style, add:
+  ```js
+      @media not all and (min-resolution:.001dpcm) {
+        /* Safari only override */
+        gap: ${props => props.screensize == "desktop" ? "5em" : "3em"};
+        
+    }
+  ```
+#### :diamonds: Deploy Netlify
+- Install `npm install -g netlify-cli`
+- If having deprecated message, update: `npm update netlify-cli`
+- Build the vite project: `npm update netlify-cli`
+  - If cannot build, run `npm init` first
+- Run the deploy `ntl init`
+  - Enter site name
+  - Link repo through github
+  - Finally, run `ntl deploy --prod` to deploy link
+- Afterwards, if any change, only commit  push to github -> the deployed web will be automatically updated
+
 
 ### Getting Started
 #### Prerequisites
@@ -227,12 +349,13 @@ npm install react-responsive --save
 ```
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+For further development, I will add login and register as well as being able to update avatars
 
 ### Useful resources
 
 - [Local Storage Tutorial](https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/) - Amazing article for showing how to use local storage
 - [Timestamp Resources - Moment JS](https://momentjs.com/) - This is helpful for formatting time and updating relative time continuosly
+- [SVG as Component](https://www.freecodecamp.org/news/how-to-import-svgs-in-react-and-vite/) - This helps me know how to style custom svg when hover, when disabling the elements without import new images
 
 ## Author
 
@@ -242,6 +365,4 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-  //https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar
-// https://stackoverflow.com/questions/11448340/how-to-get-duration-in-weeks-with-moment-js
+Thanks stackoverflow
